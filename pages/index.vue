@@ -4,6 +4,7 @@
       <Logo />
       <h1 class="title">
         Chandan
+        Shubhang
       </h1>
       
     </div>
@@ -18,9 +19,6 @@ export default {}
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
