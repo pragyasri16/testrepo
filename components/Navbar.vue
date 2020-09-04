@@ -36,8 +36,13 @@
       </div>
     </nav>
 
-    <div class="wrapper">
-      <div class="sidebar">
+    <div class="wrapper" id="mySideNav">
+      
+      <div class="sidebar" >
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
         <ul>
           <li>
             <nuxt-link to="/" class="db">Dashboard</nuxt-link>
@@ -65,17 +70,27 @@
 
 <script>
 export default {}
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
 </script>
 
 <style scoped>
 .navbar {
   border-bottom: 5px solid #f1f3f5;
+  padding-top: 15px;
+  padding-bottom: 15px ;
 }
 .nav-item {
+  padding-top: 5px;
   padding-left: 10px;
   font-size: 18px;
   font-family: IBM Plex Sans;
-}
+} 
 .btn {
   margin-left: 10px;
   margin-right: 10px;
@@ -107,6 +122,12 @@ export default {}
   border-right: solid 5px #e9e9e9;
 }
 
+.close{
+  width: 40px;
+  height: 40px;
+  color: #fff;
+}
+
 .db {
   color: #39d5d5;
   font-style: normal;
@@ -127,5 +148,6 @@ export default {}
 
 li:hover {
   background-color: #e9e9e9;
+  text-decoration: none;
 }
 </style>
