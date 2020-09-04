@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar class="mb-5" />
-    <hr />
+  
     <Nuxt class="mt-5" />
   </div>
 </template>

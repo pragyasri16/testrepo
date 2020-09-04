@@ -36,50 +36,20 @@
       </div>
     </nav>
 
-    <div class="wrapper" id="mySideNav">
-      
-      <div class="sidebar" >
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-        <ul>
-          <li>
-            <nuxt-link to="/" class="db">Dashboard</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Publish</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Test</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Question Set</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Analytics</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Sent</nuxt-link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
 export default {}
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
 </script>
 
 <style scoped>
+h2
+{
+  padding-left:30px;
+}
 .navbar {
   border-bottom: 5px solid #f1f3f5;
   padding-top: 15px;
@@ -118,14 +88,8 @@ function closeNav() {
   height: 100%;
   padding: 30px 0px;
   position: fixed;
-  background: rgb(25, 39, 230);
+  background: #fff;
   border-right: solid 5px #e9e9e9;
-}
-
-.close{
-  width: 40px;
-  height: 40px;
-  color: #fff;
 }
 
 .db {
@@ -135,6 +99,7 @@ function closeNav() {
   font-size: 25px;
   line-height: 36px;
   padding: 15px;
+  text-decoration: none;
 }
 
 .dbc {
@@ -144,6 +109,7 @@ function closeNav() {
   font-size: 25px;
   line-height: 36px;
   padding: 15px;
+  text-decoration: none;
 }
 
 li:hover {
