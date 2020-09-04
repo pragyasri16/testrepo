@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Navbar/>
+        <Sidebar/>
         <h1>This is HR Layout No. 1 </h1>
         <nuxt/>
     </div>
