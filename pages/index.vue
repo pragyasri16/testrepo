@@ -1,9 +1,9 @@
 <template>
+ 
   <div class="container">
     <div>
       <Logo />
       <h1 class="title">
-        Chandan
         Shubhang
       </h1>
       

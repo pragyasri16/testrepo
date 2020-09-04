@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Navbar />
-    <Signin />
-    <Nuxt />
+    <Navbar class="mb-5" />
+    <h2>This is default layout</h2>
+    <Nuxt class="default-layout mt-5" />
   </div>
 </template>
 
@@ -24,6 +24,9 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+.default-layout{
+  margin-left: 201px;
 }
 
 .button--green {
@@ -54,4 +57,5 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
 </style>
