@@ -88,7 +88,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+    layout: 'hr'
+}
 </script>
 
 <style scoped>
