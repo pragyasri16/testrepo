@@ -1,7 +1,6 @@
 <template>
   <div>
     <Navbar class="mb-5" />
-    <!-- <Sidebar/> -->
     <hr />
     <Nuxt class="mt-5" />
   </div>
