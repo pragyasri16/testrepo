@@ -1,13 +1,13 @@
 <template>
     <div>
-        <NavbarD />
-        <h1>This is HR Layout No. 1 </h1>
-        <nuxt/>
+        <h1>This is HM Page No. 1</h1>
+     
     </div>
 </template>
 
 <script>
     export default {
+        layout:'hm'
         
     }
 </script>

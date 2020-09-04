@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavbarD />
-        <h1>This is HR Layout No. 1 </h1>
+        <h1>This is HM Layout No. 1 </h1>
         <nuxt/>
     </div>
 </template>

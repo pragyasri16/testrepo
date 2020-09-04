@@ -36,46 +36,31 @@
       </div>
     </nav>
 
-    <div class="wrapper">
-      <div class="sidebar">
-        <ul>
-          <li>
-            <nuxt-link to="/" class="db">Dashboard</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Publish</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Test</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Question Set</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Analytics</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/" class="dbc">Sent</nuxt-link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
 export default {}
+
 </script>
 
 <style scoped>
+h2
+{
+  padding-left:30px;
+}
 .navbar {
   border-bottom: 5px solid #f1f3f5;
+  padding-top: 15px;
+  padding-bottom: 15px ;
 }
 .nav-item {
+  padding-top: 5px;
   padding-left: 10px;
   font-size: 18px;
   font-family: IBM Plex Sans;
-}
+} 
 .btn {
   margin-left: 10px;
   margin-right: 10px;
@@ -103,7 +88,7 @@ export default {}
   height: 100%;
   padding: 30px 0px;
   position: fixed;
-  background: rgb(25, 39, 230);
+  background: #fff;
   border-right: solid 5px #e9e9e9;
 }
 
@@ -114,6 +99,7 @@ export default {}
   font-size: 25px;
   line-height: 36px;
   padding: 15px;
+  text-decoration: none;
 }
 
 .dbc {
@@ -123,9 +109,11 @@ export default {}
   font-size: 25px;
   line-height: 36px;
   padding: 15px;
+  text-decoration: none;
 }
 
 li:hover {
   background-color: #e9e9e9;
+  text-decoration: none;
 }
 </style>
