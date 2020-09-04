@@ -102,7 +102,7 @@ function closeNav() {
 
 .wrapper {
   display: flex;
-  position: fixed;
+  position:;
 }
 
 * {
