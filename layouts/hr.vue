@@ -1,17 +1,18 @@
 <template>
-    <div>
-        <Navbar/>
-        <h1>This is HR Layout No. 1 </h1>
-        <nuxt/>
-    </div>
+  <div>
+    <NavbarD />
+    <h2>Create Post</h2>
+    <nuxt />
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {}
 </script>
 
 <style scoped>
-
+h2 {
+  text-align: center;
+  padding-bottom: 20px;
+}
 </style>

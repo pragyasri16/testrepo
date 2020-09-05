@@ -1,8 +1,8 @@
 <template>
   <div>
     <Navbar class="mb-5" />
-    <h2>This is default layout</h2>
-    <Nuxt class="default-layout mt-5" />
+  
+    <Nuxt class="mt-5" />
   </div>
 </template>
 
