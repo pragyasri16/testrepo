@@ -1,12 +1,8 @@
 <template>
- 
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">
-        Shubhang
-      </h1>
-      
+      <h1 class="title">Shubhang</h1>
     </div>
   </div>
 </template>
@@ -23,16 +19,8 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -52,3 +40,4 @@ export default {}
   padding-top: 15px;
 }
 </style>
+
