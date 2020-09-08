@@ -76,8 +76,6 @@
       <div class="row">
         <div class="col-9">
           <div class="form-group">
-
-            <textarea name="description" id="description" cols="59" rows="3" class="des"></textarea>
             <textarea name="description" id="description" cols="57" rows="5"></textarea>
           </div>
         </div>
@@ -105,13 +103,11 @@ export default {
 }
 .main-form {
   width: 550px;
- 
+  margin-left: 30px;
 }
 .des {
   border: 1px solid rgb(216, 214, 214);
-
   margin-left: 40px;
-
 }
 
 .text {
@@ -119,9 +115,8 @@ export default {
   font-size: 20px;
 }
 
-.btn{
-  margin-left: 100px;
-  align: center;
+.btn {
+  margin-left: 10px;
 }
 .form-control,
 textarea {
@@ -130,6 +125,5 @@ textarea {
   box-sizing: border-box;
   box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-
 }
 </style>
