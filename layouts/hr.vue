@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavbarD />
-    <h2>Create Post</h2>
+    <!-- <h2>Create Post</h2> -->
     <nuxt />
   </div>
 </template>
@@ -13,6 +13,7 @@ export default {}
 <style scoped>
 h2 {
   text-align: center;
+  margin-left:220px;
   padding-bottom: 20px;
 }
 </style>

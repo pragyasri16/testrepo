@@ -76,7 +76,7 @@
       <div class="row">
         <div class="col-9">
           <div class="form-group">
-            <textarea name="description" id="description" cols="57" rows="5" class="des"></textarea>
+            <textarea name="description" id="description" cols="59" rows="3" class="des"></textarea>
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@ export default {
 <style scoped>
 .main-form {
   width: 550px;
-  margin-left: 300px;
+  margin-left: 500px;
 }
 .des {
   border: 1px solid rgb(216, 214, 214);
@@ -104,5 +104,9 @@ export default {
 .text {
   font-weight: bold;
   font-size: 20px;
+}
+.btn{
+  margin-left: 100px;
+  align: center;
 }
 </style>
