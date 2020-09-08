@@ -46,9 +46,11 @@
             </g>
           </svg>
           <h5 id="profile_name">HR Name</h5>
+          <!-- @click="sidetest" -->
           <hr />
+          <!-- <li @click="newtest">Test</li> -->
           <li>
-            <nuxt-link to="/" class="db">Dashboard</nuxt-link>
+            <nuxt-link to="#" class="db">Dashboard</nuxt-link>
           </li>
           <li>
             <nuxt-link to="/" class="dbc">Publish</nuxt-link>
@@ -72,7 +74,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  // methods: {
+  //   sidetest() {
+  //     $('.sidebar').css('width', '150px')
+  //     $('.testnuxt').css('margin-left', '180px')
+  //   },
+  //   newtest() {
+  //     $('.sidebar').css('width', '200px')
+  //     $('.testnuxt').css('margin-left', '250px')
+  //   },
+  // },
+}
 </script>
 
 <style scoped>

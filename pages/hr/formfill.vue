@@ -76,18 +76,19 @@
       <div class="row">
         <div class="col-9">
           <div class="form-group">
-            <textarea name="description" id="description" cols="57" rows="5" class="des"></textarea>
+            <textarea name="description" id="description" cols="57" rows="5"></textarea>
           </div>
         </div>
       </div>
-
-      <button class="btn btn-primary">Add Test</button>
-      <button class="btn btn-primary">Promote</button>
+      <div class="text-right">
+        <button class="btn btn-primary">Add Test</button>
+        <button class="btn btn-primary">Promote</button>
+      </div>
     </form>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   layout: 'hr',
 }
@@ -104,11 +105,17 @@ export default {
   width: 550px;
   margin-left: 40px;
 }
-.des {
-  border: 1px solid rgb(216, 214, 214);
-}
+
 .text {
   font-weight: bold;
   font-size: 20px;
+}
+.form-control,
+textarea {
+  background: #ffffff;
+  border: 1.5px solid #657285;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 </style>

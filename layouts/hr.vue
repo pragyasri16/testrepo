@@ -2,7 +2,7 @@
   <div>
     <NavbarD />
     <h2>Create Post</h2>
-    <nuxt />
+    <nuxt style="margin-left:250px" class="testnuxt" />
   </div>
 </template>
 
