@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Navbar class="mb-5" />
+    <!-- <Navbar class="mb-5" /> -->
+    <Snav/>
   
     <Nuxt class="mt-5" />
   </div>
@@ -24,6 +25,9 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+.default-layout{
+  margin-left: 201px;
 }
 
 .button--green {
@@ -54,4 +58,5 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
 </style>
