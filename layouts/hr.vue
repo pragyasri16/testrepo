@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavbarD />
-    <h2>Create Post</h2>
+    <!-- <h2>Create Post</h2> -->
     <!-- <h2>Create Post</h2> -->
     <nuxt />
 

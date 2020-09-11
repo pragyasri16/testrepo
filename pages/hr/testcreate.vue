@@ -7,12 +7,12 @@
             <form action class="main-form">
                 <div class="row">
                     <div class="col-3">
-                    <div class="form-group">
-                        <label for="jobtitle" id="jobname">Job Title:</label>
-                    </div>
+                        <div class="form-group">
+                            <label for="jobtitle" id="jobname">Job Title:</label>
+                        </div>
                     </div>
                     <div class="col-3">
-                    <input type="text" name="jobtitle" id="jobtitle" class="form-control" />
+                        <input type="text" name="jobtitle" id="jobtitle" class="form-control" />
                     </div>
                     
                     <div class="col-3">
@@ -34,78 +34,31 @@
                     </div>
 
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" @click="toggleDropdown($event)", data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Choose Skills
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <div id="list-example" class="list-group">
+                            <a class="dropdown-item" href="#">All Sector</a>
+                            <a class="dropdown-item" href="#">IT Sector</a>
+                            <a class="dropdown-item" href="#">Apptitude</a>
+                            <a class="dropdown-item" href="#">English</a>
+                        </div>
+                            <!-- <div id="list-example" class="list-group">
                                 <a class="list-group-item list-group-item-action" href="#list-item-1">All Section</a>
                                 <a class="list-group-item list-group-item-action" href="#list-item-2">IT Sector</a>
                                 <a class="list-group-item list-group-item-action" href="#list-item-3">Apptitude</a>
                                 <a class="list-group-item list-group-item-action" href="#list-item-4">English</a>
-                                </div>
-                        </div>
+                                </div> -->
                     </div>
-                    </div>
-                        <div class="sect">
-                            <!-- <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example     ">
-                                <h4 id="list-item-1">Item 1</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <h4 id="list-item-2">Item 2</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <h4 id="list-item-3">Item 3</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                 
-                            </div>
-                        </div>-->
-
-                 </div>
-
+                </div>
+                      
             </form>
-            <button type="button" class="btn1">Archieve</button>
-            <button type="button" class="btn1">Custom Test</button>
-            <button type="button" class="btn1">Reset</button>
-            <button type="button" class="btn1">Genrate Test</button>
-        </div>
-        
-            
+                    <button type="button" class="btn1">Archieve</button>
+                    <button type="button" class="btn1">Custom Test</button>
+                    <button type="button" class="btn1">Reset</button>
+                    <button type="button" class="btn1">Genrate Test</button>
+        </div>      
     </div>
 </template>
 
@@ -113,15 +66,21 @@
     export default {
         layout:'hr'
         
-    }
+    // methods: {
+    //         toggleDropdown(event) {
+    //             event.currentTarget.classList.toggle('is-active')
+    //         }
+    //     }
+ }
 </script>
 
 <style scoped>
 #container{
     width: 1080px;
-    height: 510px;
+    height: 500px;
     margin-left: 260px;
     margin-top: 50px;
+    /* margin-top: px; */
     float: center;
     background: #ffffff;
 }
@@ -149,26 +108,26 @@ border: 1px solid #39D5D5;
 #jobname{
   font-weight: bold;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .form-control{
     width: 400px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: -160px;
 }
 
 #timename{
   font-weight: bold;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
   margin-left: 90px;
 }
 
 .custom-select{
     width: 150px;
     height: 40px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #skillname{
@@ -192,11 +151,11 @@ border: 1px solid #39D5D5;
 background: #ffffff;
 }
 
-/* .sect{
-     width:500px;
-     height:400px;
-     position:relative;
-} */
+.dropdown-item{
+    /* box-sizing: border-box;
+    background: #39D5D5; */
+}
+
 
 .btn1{
     width:150px;
