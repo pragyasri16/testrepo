@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <NavbarD />
-
-    <h2>This is HR Layout.</h2>
-
-    <nuxt />
-  </div>
+    <div>
+        <h2>This is Superadmin Dashboard.</h2>
+    </div>
 </template>
 
 <script>
-export default {}
+    export default {
+        layout:'superadmin'
+    }
 </script>
 
 <style scoped>
@@ -17,8 +15,5 @@ h2 {
   text-align: center;
   margin-left: 220px;
   padding-bottom: 20px;
-}
-* {
-  background-color: #f1f3f5;
 }
 </style>

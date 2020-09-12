@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavbarD />
-        <h1>This is HM Layout No. 1 </h1>
+        <h2>This is HM Layout.</h2>
         <nuxt/>
     </div>
 </template>
@@ -13,7 +13,9 @@
 </script>
 
 <style scoped>
-h1{
-    text-align: center;
+h2 {
+  text-align: center;
+  margin-left: 220px;
+  padding-bottom: 20px;
 }
 </style>

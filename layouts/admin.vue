@@ -1,10 +1,6 @@
 <template>
   <div>
-    <NavbarD />
-
-    <h2>This is HR Layout.</h2>
-
-    <nuxt />
+    <h2>This is Admin Layout.</h2>
   </div>
 </template>
 
@@ -17,8 +13,5 @@ h2 {
   text-align: center;
   margin-left: 220px;
   padding-bottom: 20px;
-}
-* {
-  background-color: #f1f3f5;
 }
 </style>

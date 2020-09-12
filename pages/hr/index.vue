@@ -189,4 +189,8 @@ export default {
 
 <style scoped>
 @import url('https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css');
+
+* {
+  margin-left: 250px;
+}
 </style>
