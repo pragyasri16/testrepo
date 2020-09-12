@@ -17,7 +17,7 @@
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
-          <button type="button" class="btn btn-success">Logout</button>
+          <button type="button" class="btn btn-success" @click.prevent="signOut">Logout</button>
         </ul>
       </div>
     </nav>
@@ -74,17 +74,24 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+import { auth } from '../plugins/firebaseConfig'
 export default {
-  // methods: {
-  //   sidetest() {
-  //     $('.sidebar').css('width', '150px')
-  //     $('.testnuxt').css('margin-left', '180px')
-  //   },
-  //   newtest() {
-  //     $('.sidebar').css('width', '200px')
-  //     $('.testnuxt').css('margin-left', '250px')
-  //   },
-  // },
+  methods: {
+    //   sidetest() {
+    //     $('.sidebar').css('width', '150px')
+    //     $('.testnuxt').css('margin-left', '180px')
+    //   },
+    //   newtest() {
+    //     $('.sidebar').css('width', '200px')
+    //     $('.testnuxt').css('margin-left', '250px')
+    //   },
+    signOut() {
+      auth.signOut().then(() => {
+        this.$router.push('/')
+      })
+    },
+  },
 }
 </script>
 

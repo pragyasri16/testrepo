@@ -78,7 +78,7 @@
 
       <!-- Sign up button -->
       <button class="btn btn-info my-4 btn-block" @click.prevent="signup">SUBMIT</button>
-      <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button>
+      <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->
     </form>
     <!-- Default form register -->
     <pre>
@@ -97,18 +97,7 @@ export default {
       name: '',
     }
   },
-  methods: {
-    async signin() {
-      const { user } = await auth.signInWithEmailAndPassword(
-        this.email,
-        this.pass
-      )
-      let { claims } = await user.getIdTokenResult()
-      console.log('signin =>', user)
-      console.log('Admin =>', claims)
-
-      //this.$router.push('/admin')
-    },
+  methods: {    
     async signup() {
       const { user } = await auth.createUserWithEmailAndPassword(
         this.email,
@@ -117,13 +106,13 @@ export default {
       // console.log('user =>', user)
       let data = {
         uid: user.uid,
-        role: { admin: true },
+        role: { sa: true },
       }
       let callable = firebase.functions().httpsCallable('customeClaims')
       const res = await callable(data)
       const { claims } = await user.getIdTokenResult()
-      console.log('user => ', user)
-      console.log('claims => ', claims)
+      // console.log('user => ', user)
+      // console.log('claims => ', claims)
     },
   },
 }
