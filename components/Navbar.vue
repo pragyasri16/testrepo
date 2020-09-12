@@ -35,32 +35,28 @@
         </ul>
       </div>
     </nav>
-
-    
   </div>
 </template>
 
 <script>
 export default {}
-
 </script>
 
 <style scoped>
-h2
-{
-  padding-left:30px;
+h2 {
+  padding-left: 30px;
 }
 .navbar {
   border-bottom: 5px solid #f1f3f5;
   padding-top: 15px;
-  padding-bottom: 15px ;
+  padding-bottom: 15px;
 }
 .nav-item {
   padding-top: 5px;
   padding-left: 10px;
   font-size: 18px;
   font-family: IBM Plex Sans;
-} 
+}
 .btn {
   margin-left: 10px;
   margin-right: 10px;

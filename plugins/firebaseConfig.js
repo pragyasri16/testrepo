@@ -1,21 +1,21 @@
-<<<<<<< HEAD
-const firebase = require("firebase/app");
-require("firebase/firestore"); //if using firebase database
-require ("firebase/storage");
-//require("firebase/messseging");
-require("firebase/auth");
-//your web app's Firebase configuration
 
-if(!firebase.apps.length) {
-    const config ={
+// const firebase = require("firebase/app");
+// require("firebase/firestore"); //if using firebase database
+// require ("firebase/storage");
+// //require("firebase/messseging");
+// require("firebase/auth");
+// //your web app's Firebase configuration
 
-    };
-    firebase.initializeApp(config);
-}
-export const db = firebase.firestore();
-export const storage = firebase.storage();
-export const auth = firebase.auth();
-=======
+// if(!firebase.apps.length) {
+//     const config ={
+
+//     };
+//     firebase.initializeApp(config);
+// }
+// export const db = firebase.firestore();
+// export const storage = firebase.storage();
+// export const auth = firebase.auth();
+
 const firebase = require('firebase/app')
 require('firebase/firestore')
 require('firebase/storage')
@@ -37,4 +37,4 @@ if (!firebase.apps.length) {
 export const db = firebase.firestore()
 export const storage = firebase.storage()
 export const auth = firebase.auth()
->>>>>>> c5234dc3ff5143d0d3cfc86a81b19be139908c71
+
