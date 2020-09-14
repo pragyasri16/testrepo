@@ -32,8 +32,62 @@
                     <div class="form-group">
                         <label for="jobtitle" id="skillname">Choose Skills for Test:</label>
                     </div>
+                </div>
+                <br>
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group" role="group" aria-label="1">
+                            <!-- <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">1</button>
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">2</button>
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">3</button>
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">4</button>
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">5</button>
+                             -->
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample">All Sector</button>
+                        </div>
 
-                    <div class="dropdown">
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample">IT Sector</button>
+                        </div>
+
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample"></button>
+                        </div>
+
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample">8</button>
+                        </div>
+
+                        <div class="btn-group" role="group" aria-label="Third group">
+                            <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#collapseExample">8</button>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Option 1
+                                </label>
+
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Option 1
+                                </label>
+
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Option 1
+                                </label>
+
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" value="">Option 1
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" @click="toggleDropdown($event)", data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Choose Skills
                         </a>
@@ -44,14 +98,9 @@
                             <a class="dropdown-item" href="#">Apptitude</a>
                             <a class="dropdown-item" href="#">English</a>
                         </div>
-                            <!-- <div id="list-example" class="list-group">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1">All Section</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-2">IT Sector</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-3">Apptitude</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-4">English</a>
-                                </div> -->
-                    </div>
-                </div>
+                            
+                    </div> -->
+                
                       
             </form>
                     <button type="button" class="btn1">Archieve</button>
@@ -172,5 +221,22 @@ background: #ffffff;
     line-height: 20px;
     text-align: center;
     color: #FFFFFF;
+}
+
+.btn-toolbar{
+    padding-top: 80px;
+    padding-left: 200px;
+    float: center;
+
+}
+
+.btn-group{
+   margin-left: -200px;
+
+   padding-left: 5px;
+}
+
+.btn btn-secondary{
+    padding-top: 125px;
 }
 </style>
