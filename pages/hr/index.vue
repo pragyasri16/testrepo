@@ -165,6 +165,7 @@
 
 <script>
 export default {
+  // middleware: 'auth',
   mounted() {
     $('#example').DataTable({
       columnDefs: [

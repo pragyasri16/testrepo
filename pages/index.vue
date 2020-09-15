@@ -2,14 +2,12 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">Shubhang</h1>
+       <h1 class="title">Shubhang</h1>
     </div>
   </div>
-</template>
+</template> 
 
-<script>
-export default {}
-</script>
+
 
 <style>
 .container {
@@ -40,4 +38,6 @@ export default {}
   padding-top: 15px;
 }
 </style>
+
+
 

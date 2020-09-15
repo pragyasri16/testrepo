@@ -91,6 +91,7 @@
 <script scoped>
 export default {
   layout: 'hr',
+  // middleware: 'auth',
 }
 </script>
 

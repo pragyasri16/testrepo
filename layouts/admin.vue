@@ -1,5 +1,6 @@
 <template>
   <div>
+    <NavbarD/>
     <h2>This is Admin Layout.</h2>
   </div>
 </template>

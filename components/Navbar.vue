@@ -30,8 +30,8 @@
             <nuxt-link to class="nav-link">Contact</nuxt-link>
           </li>
 
-          <button type="button" class="btn btn-primary">Login</button>
-          <button type="button" class="btn btn-success">SignUp</button>
+          <button type="button" class="btn btn-primary" @click.prevent="login">Login</button>
+          <button type="button" class="btn btn-success" @click.prevent="signup">SignUp</button>
         </ul>
       </div>
     </nav>
@@ -39,7 +39,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    login() {
+      this.$router.push('/loginform')
+    },
+    signup() {
+      this.$router.push('/signup')
+    },
+  },
+}
 </script>
 
 <style scoped>

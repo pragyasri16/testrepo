@@ -2,7 +2,7 @@
   <div class="body">
     <div class="wrapper try">
       <div class="title">Login Form</div>
-      <form action="#">
+      <form>
         <div class="field">
           <input type="email" v-model="email" required />
           <label>Email Address</label>
@@ -21,18 +21,23 @@
           </div>
         </div>
         <div class="field">
-          <input type="submit" @click.prevent="login" value="Login" />
+          <input type="submit" @click.prevent="login(),addMember()" value="Login" />
+          <!-- @click.prevent="login" -->
         </div>
         <div class="signup-link">
           Not a member?
           <a href="#">Signup now</a>
         </div>
       </form>
+      <!-- <div>
+        <h4 v-for="member in members" :key="member.id">{{member.email}}</h4>
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
 export default {
@@ -42,8 +47,25 @@ export default {
       pass: '',
     }
   },
+  computed: {
+    ...mapState({
+      members: (state) => state.members,
+    }),
+  },
 
   methods: {
+    ...mapMutations({
+      addUser: 'addUser',
+    }),
+    addMember() {
+      let user = {
+        email: this.email,
+      }
+      this.addUser(user)
+      this.email = ''
+      this.pass = ''
+    },
+
     async login() {
       const { user } = await auth.signInWithEmailAndPassword(
         this.email,
