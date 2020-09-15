@@ -2,7 +2,11 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
+<<<<<<< HEAD
       allow read, write;
+=======
+      allow read, write: if false;
+>>>>>>> 9234ed8713f9cf0e763e7ce9a69fd40ba8b71b9c
     }
   }
 }

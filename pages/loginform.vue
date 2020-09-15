@@ -5,11 +5,11 @@
       <h2>Login </h2>
       <form >
         <div class="field">
-          <input type="text" required />
+          <input type="email" v-model="email" required />
           <label>Email Address</label>
         </div>
         <div class="field">
-          <input type="password" required />
+          <input type="password" v-model="pass" required />
           <label>Password</label>
         </div>
         
@@ -20,7 +20,7 @@
           
        
         <div class="field">
-          <input type="submit" value="Login" />
+          <input type="submit" @click.prevent="login" value="Login" />
         </div>
         <div class="signup-link">
           Not a member?
@@ -32,7 +32,45 @@
 </template>
 
 <script>
-export default {}
+import firebase from 'firebase'
+import { auth } from '../plugins/firebaseConfig'
+export default {
+  data() {
+    return {
+      email: '',
+      pass: '',
+    }
+  },
+
+  methods: {
+    async login() {
+      const { user } = await auth.signInWithEmailAndPassword(
+        this.email,
+        this.pass
+      )
+      let { claims } = await user.getIdTokenResult()
+      // console.log('signin =>', user)
+      // console.log('Admin =>', claims)
+
+      if (claims.admin == true) {
+        this.$router.push('/admin')
+      }
+      if (claims.hr == true) {
+        this.$router.push('/hr')
+      }
+      if (claims.hm == true) {
+        this.$router.push('/hm')
+      }
+      if (claims.sa == true) {
+        this.$router.push('/superadmin')
+      }
+      // else {
+      //   alert('Incorrect username or password.')
+      // }
+      //this.$router.push('/admin')
+    },
+  },
+}
 </script>
 
 <style scoped>

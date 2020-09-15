@@ -34,6 +34,12 @@ export default {
           'sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z',
         crossorigin: 'anonymous',
       },
+<<<<<<< HEAD
+=======
+      // {
+      //   href: ''
+      // },
+>>>>>>> 9234ed8713f9cf0e763e7ce9a69fd40ba8b71b9c
     ],
     script: [
       {
@@ -59,6 +65,10 @@ export default {
       {
         src: 'https://kit.fontawesome.com/a076d05399.js',
       },
+<<<<<<< HEAD
+=======
+      { src: 'https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js'}
+>>>>>>> 9234ed8713f9cf0e763e7ce9a69fd40ba8b71b9c
     ],
   },
   /*
@@ -96,5 +106,17 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
+<<<<<<< HEAD
   build: {},
+=======
+  build: {
+    extend(config, ctx) {
+      config.node = {
+        $: true,
+        jQuery: true,
+        jquery: true,
+      }
+    },
+  },
+>>>>>>> 9234ed8713f9cf0e763e7ce9a69fd40ba8b71b9c
 }

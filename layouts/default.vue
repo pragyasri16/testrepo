@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar class="mb-5" />
-  
+
     <Nuxt class="mt-5" />
   </div>
 </template>
@@ -25,7 +25,7 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-.default-layout{
+.default-layout {
   margin-left: 201px;
 }
 
@@ -57,5 +57,4 @@ html {
   color: #fff;
   background-color: #35495e;
 }
-
 </style>
