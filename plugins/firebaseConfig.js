@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-const firebase = require("firebase/app");
-require("firebase/firestore");
-require('firebase/firebase-storage');
-
-require("firebase/auth");
-
-
-if (!firebase.apps.length) {
-    
-};
-firebase.initializeApp(config);
-
-console.log("[Running From Development]")
-export const db = firebase.firestore();
-export const storage = firebase.storage();
-export const auth = firebase.auth();
-=======
 const firebase = require('firebase/app')
 require('firebase/firestore')
 require('firebase/storage')
@@ -36,5 +18,6 @@ if (!firebase.apps.length) {
 
 export const db = firebase.firestore()
 export const storage = firebase.storage()
+
 export const auth = firebase.auth()
->>>>>>> 9234ed8713f9cf0e763e7ce9a69fd40ba8b71b9c
+
