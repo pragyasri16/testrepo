@@ -1,3 +1,36 @@
+// const firebase = require("firebase/app");
+// require("firebase/firestore"); //if using firebase database
+// require ("firebase/storage");
+// //require("firebase/messseging");
+// require("firebase/auth");
+// //your web app's Firebase configuration
+
+// if(!firebase.apps.length) {
+//     const config ={
+
+//     };
+//     firebase.initializeApp(config);
+// }
+// export const db = firebase.firestore();
+// export const storage = firebase.storage();
+// export const auth = firebase.auth();
+
+// const firebase = require("firebase/app");
+// require("firebase/firestore");
+// require('firebase/firebase-storage');
+// require("firebase/auth");
+
+
+if (!firebase.apps.length) {
+    
+};
+firebase.initializeApp(config);
+
+console.log("[Running From Development]")
+export const db = firebase.firestore();
+export const storage = firebase.storage();
+export const auth = firebase.auth();
+
 const firebase = require('firebase/app')
 require('firebase/firestore')
 require('firebase/storage')
@@ -20,4 +53,3 @@ export const db = firebase.firestore()
 export const storage = firebase.storage()
 
 export const auth = firebase.auth()
-

@@ -1,7 +1,9 @@
 <template>
   <div>
     <NavbarD />
+
     <h2>This is HR Layout.</h2>
+
     <nuxt />
   </div>
 </template>

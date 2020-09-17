@@ -1,208 +1,275 @@
 <template>
-    <div style="background: #f1f3f5">
-        <div class="container-sm" id="container">
-           <h2>Create a new Smart Test</h2>
-           <hr id="hline1"> 
+<div class="container">
+  <h1>Create a new Smart Test</h1>
+    <form action class="main-form-sm-md" id="form1">
+        <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="jobtitle" id="jobname">Job Title :</label>
+                        </div>
+                    </div>
 
-            <form action class="main-form">
-                <div class="row">
                     <div class="col-3">
-                    <div class="form-group">
-                        <label for="jobtitle" id="jobname">Job Title:</label>
-                    </div>
-                    </div>
-                    <div class="col-3">
-                    <input type="text" name="jobtitle" id="jobtitle" class="form-control" />
+                        <input type="text" name="jobtitle" id="jobtitle" class="form-control" />
                     </div>
                     
                     <div class="col-3">
                         <div class="form-group">
-                            <label for="jobtitle" id="timename">Time Duration:</label>
+                            <label for="jobtitle" id="timename">Time Duration :</label>
                         </div>
                     </div>
+
                     <select class="custom-select">
                         <option selected>15 Minutes</option>
                         <option value="1">20 Minutes</option>
                         <option value="2">25 Minutes</option>
                         <option value="3">30 Minutes</option>
                     </select>
-                </div>
 
-                <div class="col-3">
-                    <div class="form-group">
-                        <label for="jobtitle" id="skillname">Choose Skills for Test:</label>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="jobtitle" id="skillname">Choose Skills for Test :</label>
+                        </div>
                     </div>
 
-                    <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Choose Skills
-                        </a>
+                    <div class="col-3">
+                        <div class="menu">
+                            <p id="hmenu1" v-on:click="cardShow">All-Sector</P> 
+                            <p id="hmenu2" v-on:click="cardShow2">IT-Sector</P>
+                            <p id="hmenu3" v-on:click="cardShow3">Apptitude</P>
+                            <p id="hmenu4" v-on:click="cardShow4">English</P>
+                            <p id="hmenu5" v-on:click="cardShow5">Reasoning</P>  
+                        </div>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <div id="list-example" class="list-group">
-                                <a class="list-group-item list-group-item-action" href="#list-item-1">All Section</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-2">IT Sector</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-3">Apptitude</a>
-                                <a class="list-group-item list-group-item-action" href="#list-item-4">English</a>
+                        <div class="container-fluid">
+                                <div class="card" v-if="contView">
+                                    <div class="card-body bg-primary text-white">Basic card 1</div>
+                                </div>
+                                <div class="card" v-if="contView2">
+                                    <div class="card-body bg-primary text-white">Basic card 2</div>
+                                </div>
+                                <div class="card" v-if="contView3">
+                                    <div class="card-body bg-primary text-white">Basic card 3</div>
+                                </div>
+                                <div class="card" v-if="contView4">
+                                    <div class="card-body bg-primary text-white">Basic card 4</div>
+                                </div>
+                                <div class="card" v-if="contView5">
+                                    <div class="card-body bg-primary text-white">Basic card 5</div>
                                 </div>
                         </div>
                     </div>
-                    </div>
-                        <div class="sect">
-                            <!-- <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example     ">
-                                <h4 id="list-item-1">Item 1</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <h4 id="list-item-2">Item 2</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <h4 id="list-item-3">Item 3</h4>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                 
-                            </div>
-                        </div>-->
-
-                 </div>
-
-            </form>
-            <button type="button" class="btn1">Archieve</button>
-            <button type="button" class="btn1">Custom Test</button>
-            <button type="button" class="btn1">Reset</button>
-            <button type="button" class="btn1">Genrate Test</button>
+                    
+                    
         </div>
-        
-            
-    </div>
+                    <button type="button" class="btn1">Archieve</button>
+                    <button type="button" class="btn2">Custom Test</button>
+                    <button type="button" class="btn3">Reset</button>
+                    <button type="button" class="btn4">Genrate Test</button>
+    </form>
+</div>
 </template>
 
 <script>
     export default {
-        layout:'hr'
-        
-    }
+        layout:'hr',
+
+        data(){
+            return{
+                contView: false,
+                contView2: false,
+                contView3: false,
+                contView4: false,
+                contView5: false
+            };
+        },
+
+        methods:{
+                   cardShow(){
+                           this.contView = true;
+                   },
+                   cardShow2(){
+                           this.contView2 = true;
+                   },
+                   cardShow3(){
+                           this.contView3 = true;
+                   },
+                   cardShow4(){
+                           this.contView4 = true;
+                   },
+                   cardShow5(){
+                           this.contView5 = true;
+                   }
+                }
+        };
+ 
 </script>
 
 <style scoped>
-#container{
-    width: 1080px;
-    height: 510px;
-    margin-left: 260px;
-    margin-top: 50px;
-    float: center;
-    background: #ffffff;
+.container{
+    background: lightblue;
+    width:1080px;
+    height: auto;
+    margin-left: 255px;
 }
-
-h2{
+.container h1{
 font-family: IBM Plex Sans;
 font-style: normal;
 font-weight: normal;
-font-size: 30px;
+font-size: 40px;
 line-height: 36px;
-/* or 75% */
-text-align: center;
-color: #000000;
+
 }
 
-#hline1{
-position: absolute;
-width: 1078px;
-height: 0px;
-left: 260px;
-top: 150px;
-border: 1px solid #39D5D5;
+#form1{
+    height: 600px;
+    background: #ffffff;
 }
 
 #jobname{
   font-weight: bold;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
+  margin-left: -130px;
 }
 
 .form-control{
     width: 400px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: -160px;
 }
 
 #timename{
   font-weight: bold;
   font-size: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
   margin-left: 90px;
 }
 
 .custom-select{
     width: 150px;
     height: 40px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #skillname{
     font-weight: bold;
     font-size: 20px;
     padding-top: 20px;
-    margin-left: -15px;
+    margin-left: 0px;
 }
 
-.btn{
-    width:150px;
-    height: 30px;
-    margin-top: -100px;
-    margin-left: 220px;
-    background: #f1f3f5;
-    color:#000000;
-     
+.menu{
+    margin-top: 25px;
+    padding-left: px;
+    display: flex;
 }
 
-.dropdown-menu{
-background: #ffffff;
+#hmenu1{
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 0px;
+    margin-top: px;
+    position: relative;
+}
+#hmenu2{
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 80px;
+    margin-top: px;
+    position: relative;
+    
+}
+#hmenu3{
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 80px;
+    margin-top: px;
+    position: relative;
+}
+#hmenu4{
+   cursor: pointer;
+    font-size: 20px;
+    margin-left: 80px;
+    margin-top: px;
+    position: relative;
 }
 
-/* .sect{
-     width:500px;
-     height:400px;
-     position:relative;
-} */
+#hmenu5{
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 80px;
+    margin-top: px;
+    position: relative;
+}
+    
+.card{
+    width: 1000px;
+   height: 250px;
+   margin-left: -260px;
+   margin-bottom: 20px
+}   
 
 .btn1{
     width:150px;
     height: 30px;
-    margin-top: 250px;
-    margin-left: 80px;
+    margin-top: 300px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    background: #4EABE6;
+    border: 1px solid #4EABE6;
+    border-radius: 10px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btn2{
+    width:150px;
+    height: 30px;
+    margin-top: 500px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    background: #4EABE6;
+    border: 1px solid #4EABE6;
+    border-radius: 10px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btn3{
+    width:150px;
+    height: 30px;
+    margin-top: 500px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    background: #4EABE6;
+    border: 1px solid #4EABE6;
+    border-radius: 10px;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btn4{
+    width:150px;
+    height: 30px;
+    margin-top: 500px;
+    margin-left: 100px;
+    margin-bottom: 20px;
     background: #4EABE6;
     border: 1px solid #4EABE6;
     border-radius: 10px;
