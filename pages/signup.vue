@@ -6,28 +6,22 @@
 
       <div class="form-row mb-4">
         <div class="col">
-          <!-- First name -->
+          <!-- contact person name -->
           <input
             type="text"
-            id="defaultRegisterFormFirstName"
+            id="Name"
             class="form-control"
-            placeholder="Company name"
+            placeholder="Contact person name"
           />
         </div>
       </div>
-      <!-- E-mail -->
-      <input
-        type="text"
-        id="defaultRegisterFormEmail"
-        class="form-control mb-4"
-        placeholder="Address"
-      />
-
+      
+     
       <!-- E-mail -->
       <input
         v-model="email"
         type="email"
-        id="defaultRegisterFormEmail"
+        id="Email"
         class="form-control mb-4"
         placeholder="E-mail"
       />
@@ -36,7 +30,7 @@
       <input
         v-model="pass"
         type="password"
-        id="defaultRegisterFormPassword"
+        id="Password"
         class="form-control"
         placeholder="Password"
         aria-describedby="defaultRegisterFormPasswordHelpBlock"
@@ -46,36 +40,7 @@
         class="form-text text-muted mb-4"
       >At least 8 characters and 1 digit</small>
 
-      <!-- Phone number -->
-      <input
-        type="text"
-        id="defaultRegisterPhonePassword"
-        class="form-control"
-        placeholder="Contact number"
-        aria-describedby="defaultRegisterFormPhoneHelpBlock"
-      />
-      <br />
-
-      <!-- contact person name -->
-      <input
-        v-model="name"
-        type="text"
-        id="defaultRegisterPhonePassword"
-        class="form-control"
-        placeholder="Contact person name"
-        aria-describedby="defaultRegisterFormPhoneHelpBlock"
-      />
-      <br />
-
-      <!-- Country -->
-      <input
-        type="text"
-        id="defaultRegisterPhonePassword"
-        class="form-control"
-        placeholder="Country"
-        aria-describedby="defaultRegisterFormPhoneHelpBlock"
-      />
-
+     
       <!-- Sign up button -->
       <button class="btn btn-info my-4 btn-block" @click.prevent="signup">SUBMIT</button>
       <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->

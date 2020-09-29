@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-md navbar-light">
+    <nav class="navbar navbar-expand-md navbar-light ">
       <!-- Brand -->
       <h2>LOGO</h2>
 
@@ -133,6 +133,7 @@ h2 {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: white;
+
 }
 .nav-item {
   padding-top: 5px;

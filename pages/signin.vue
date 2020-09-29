@@ -1,8 +1,10 @@
 <template>
+
   <div class="main">
     <!-- Default form login -->
     <form class="text-center border border-light p-5" action="#!">
       <p align="left" class="h4 mb-4" @click.prevent="signin">Login</p>
+
 
       <!-- Email -->
       <input
