@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <h2>This is Superadmin Dashboard.</h2>
-    </div>
+  <div>
+    <h2>This is Admin Dashboard.</h2>
+  </div>
 </template>
 
 <script>
-    export default {
-        layout:'sadmin'
-    }
+export default {
+  layout: 'admin',
+}
 </script>
 
 <style scoped>

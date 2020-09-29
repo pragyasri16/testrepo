@@ -30,8 +30,8 @@
             <nuxt-link to class="nav-link">Contact</nuxt-link>
           </li>
 
-          <button type="button" class="btn btn-primary">Login</button>
-          <button type="button" class="btn btn-success">SignUp</button>
+          <button type="button" class="btn btn-primary" @click.prevent="login">Login</button>
+          <button type="button" class="btn btn-success" @click.prevent="signup">SignUp</button>
         </ul>
       </div>
     </nav>
@@ -39,7 +39,16 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    login() {
+      this.$router.push('/loginform')
+    },
+    signup() {
+      this.$router.push('/signup')
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -50,6 +59,7 @@ h2 {
   border-bottom: 5px solid #f1f3f5;
   padding-top: 15px;
   padding-bottom: 15px;
+  background: white;
 }
 .nav-item {
   padding-top: 5px;
@@ -88,25 +98,7 @@ h2 {
   border-right: solid 5px #e9e9e9;
 }
 
-.db {
-  color: #39d5d5;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 36px;
-  padding: 15px;
-  text-decoration: none;
-}
 
-.dbc {
-  color: #001737;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 36px;
-  padding: 15px;
-  text-decoration: none;
-}
 
 li:hover {
   background-color: #e9e9e9;

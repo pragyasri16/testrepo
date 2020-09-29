@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>This is Admin Layout.</h2>
+    <Final />
+    <!-- <h2>This is Admin Layout.</h2> -->
+    <Nuxt />
   </div>
 </template>
 
@@ -9,9 +11,9 @@ export default {}
 </script>
 
 <style scoped>
-h2 {
+/* h2 {
   text-align: center;
   margin-left: 220px;
   padding-bottom: 20px;
-}
+} */
 </style>

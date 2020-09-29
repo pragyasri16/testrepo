@@ -1,37 +1,33 @@
 <template>
-  
-    <div class="wrapper try">
-      <!-- <div class="title">Login Form</div> -->
-      <h2>Login </h2>
-      <form >
-        <div class="field">
-          <input type="email" v-model="email" required />
-          <label>Email Address</label>
-        </div>
-        <div class="field">
-          <input type="password" v-model="pass" required />
-          <label>Password</label>
-        </div>
-        
-          
-          
-            <nuxt-link to='' class="lcolor">Forget password ?</nuxt-link>
-           
-          
-       
-        <div class="field">
-          <input type="submit" @click.prevent="login" value="Login" />
-        </div>
-        <div class="signup-link">
-          Not a member?
-          <nuxt-link to=''>Signup Now</nuxt-link>
-        </div>
-      </form>
-    </div>
-  
+  <div class="wrapper try">
+    <!-- <div class="title">Login Form</div> -->
+    <h2>Login</h2>
+    <form autocomplete="on">
+      <div class="field">
+        <input type="email" v-model="email" required />
+        <label>Email Address</label>
+      </div>
+      <div class="field">
+        <input type="password" v-model="pass" required />
+        <label>Password</label>
+      </div>
+
+      <nuxt-link to class="lcolor">Forget password ?</nuxt-link>
+
+      <div class="field">
+        <input type="submit" @click.prevent="login" value="Login" />
+        <!-- @click.prevent="login" -->
+      </div>
+      <div class="signup-link">
+        Not a member?
+        <nuxt-link to>Signup Now</nuxt-link>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from 'vuex'
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
 export default {
@@ -41,17 +37,35 @@ export default {
       pass: '',
     }
   },
+  computed: {
+    ...mapState({
+      members: (state) => state.members,
+    }),
+  },
 
   methods: {
+    ...mapMutations({
+      addUser: 'addUser',
+    }),
+    ...mapActions('modules/user', ['userlogin']),
+    // addMember() {
+    //   let user = {
+    //     email: this.email,
+    //   }
+    //   this.addUser(user)
+    //   this.email = ''
+    //   this.pass = ''
+    // },
+
     async login() {
       const { user } = await auth.signInWithEmailAndPassword(
         this.email,
         this.pass
       )
       let { claims } = await user.getIdTokenResult()
-      // console.log('signin =>', user)
-      // console.log('Admin =>', claims)
-
+      this.userlogin({...user,...claims})
+      console.log('Data',user)
+     
       if (claims.admin == true) {
         this.$router.push('/admin')
       }
@@ -67,7 +81,7 @@ export default {
       // else {
       //   alert('Incorrect username or password.')
       // }
-      //this.$router.push('/admin')
+      
     },
   },
 }
@@ -81,15 +95,15 @@ export default {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-h2{
+h2 {
   text-align: center;
   line-height: 80px;
   font-size: 40px;
   background: #4eabe6;
   border-radius: 15px 15px 0 0;
-  color: #fff;    
+  color: #fff;
 }
-.lcolor{
+.lcolor {
   color: #262626;
 }
 
@@ -151,9 +165,6 @@ form .field input:valid ~ label {
   align-items: center;
   justify-content: space-around;
 }
-
-
-
 
 form .field input[type='submit'] {
   color: #fff;

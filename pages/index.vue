@@ -1,20 +1,86 @@
 <template>
-  <div class="container">
-    <div>
+  <div>
+    <div class="container">
       <Logo />
       <h1 class="title">Shubhang</h1>
+      {{asdf}}
+      <br />
+      <br />
+      {{qwer}}
+      <!-- {{data[0].cname}} -->
+    </div>
+
+    <h2 class="abc">Accessing data in Firestore</h2>
+    {{data}}
+    <div v-for="item in data" :key="item" class="abc">
+      <div v-for="ele in item" :key="ele">{{ele}}</div>
+      <br />
     </div>
   </div>
-</template>
+</template> 
+
 
 <script>
-export default {}
-</script>
+import firebase from 'firebase'
+import { db } from '../plugins/firebaseConfig'
+// const { uuid } = require('uuid')
+import { v4 as uuidv4 } from 'uuid'
 
+export default {
+  data() {
+    return {
+      data: [],
+      asdf: uuidv4(),
+      qwer: null,
+    }
+  },
+  methods: {
+    // xyz() {
+    //   var your_uuid = uuid()
+    //   console.log('data', your_uuid)
+    // },
+  },
+  // created() {
+  //   console.log('data', uuidv4())
+  // },
+
+  mounted() {
+    db.collection('company')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.data.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+          // this.qwer = doc.get('cname')
+          // console.log('name', cName)
+        })
+      })
+  },
+
+  // beforeCreate() {
+  //   db.collection('company')
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         this.data.push({
+  //           id: doc.id,
+  //           ...doc.data(),
+  //         })
+  //       })
+  //     })
+  // },
+}
+</script>
 <style>
+.abc {
+  margin-left: 130px;
+  margin-bottom: 30px;
+}
 .container {
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 500px;
   text-align: center;
 }
 
@@ -40,4 +106,6 @@ export default {}
   padding-top: 15px;
 }
 </style>
+
+
 
