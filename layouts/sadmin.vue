@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarD/>
+    <Final />
     <h2>This is Super Admin Layout.</h2>
   </div>
 </template>

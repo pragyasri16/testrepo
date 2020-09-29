@@ -106,7 +106,7 @@ export default {
       // console.log('user =>', user)
       let data = {
         uid: user.uid,
-        role: { hr: true },
+        role: { admin: true },
       }
       let callable = firebase.functions().httpsCallable('customeClaims')
       const res = await callable(data)

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Navbar class="mb-5" />
+    <Final />
 
-    <Nuxt class="mt-5" />
+    <Nuxt />
   </div>
 </template>
 

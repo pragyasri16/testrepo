@@ -17,9 +17,8 @@
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
-          <li>{{getUserById($route.params.id)}}</li>
+          <!-- <li>{{getUserById($route.params.id)}}</li> -->
           <button type="button" class="btn btn-success" @click.prevent="signOut">Logout</button>
-          
 
           <li class="nav-item">
             <nuxt-link to="/" class="nav-link">Home</nuxt-link>
@@ -34,13 +33,18 @@
             <nuxt-link to class="nav-link">Contact</nuxt-link>
           </li>
 
-          <button type="button" class="btn btn-primary" @click.prevent="login">Login</button>
-          <button type="button" class="btn btn-success" @click.prevent="signup">SignUp</button>
+          <button type="button" class="btn btn-primary" @click.prevent="login()">Login</button>
+          <button type="button" class="btn btn-success" @click.prevent="signup()">SignUp</button>
         </ul>
       </div>
     </nav>
 
     <div class="wrapper">
+      <input type="checkbox" id="check" />
+      <label for="check">
+        <i class="fa fa-bars" id="btn"></i>
+        <i class="fa fa-times" id="cancel"></i>
+      </label>
       <div class="sidebar">
         <ul>
           <svg
@@ -96,21 +100,19 @@ import { mapState, mapGetters } from 'vuex'
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
 export default {
-  computed: {
-    ...mapGetters({
-      getUserById: 'getUserById',
-    }),
-  },
+  // computed: {
+  //   ...mapGetters({
+  //     getUserById: 'getUserById',
+  //   }),
+  // },
 
   methods: {
-    //   sidetest() {
-    //     $('.sidebar').css('width', '150px')
-    //     $('.testnuxt').css('margin-left', '180px')
-    //   },
-    //   newtest() {
-    //     $('.sidebar').css('width', '200px')
-    //     $('.testnuxt').css('margin-left', '250px')
-    //   },
+     login() {
+      this.$router.push('/loginform')
+    },
+    signup() {
+      this.$router.push('/signup')
+    },
     signOut() {
       auth.signOut().then(() => {
         this.$router.push('/')
@@ -121,6 +123,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
+@import url('https://kit.fontawesome.com/a076d05399.js');
 h2 {
   padding-left: 30px;
 }
@@ -159,13 +163,15 @@ h2 {
 }
 
 .sidebar {
-  width: 240px;
+  width: 250px;
   height: 100%;
   padding: 30px 20px;
-
   position: fixed;
   background: #fff;
   border-right: solid 5px #e9e9e9;
+  /* Added After  */
+  left: -250px;
+  transition: all 0.5s ease;
 }
 
 #profile {
@@ -200,6 +206,96 @@ h2 {
 li:hover {
   background-color: #e9e9e9;
   text-decoration: none;
+}
+
+/* Just Added */
+
+label #btn,
+label #cancel {
+  position: fixed;
+  cursor: pointer;
+  color: rgba(0, 23, 55, 0.5);
+  border-radius: 5px;
+  border: 0.75px solid rgba(0, 23, 55, 0.5);
+  margin: 5px;
+  font-size: 29px;
+  /* background: #262626; */
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-top: -80px;
+  margin-left: 200px;
+  transition: all 0.5s ease;
+}
+#check {
+  display: none;
+}
+
+label #cancel {
+  opacity: 0;
+  visibility: hidden;
+}
+#check:checked ~ .sidebar {
+  left: 0;
+}
+#check:checked ~ label #btn {
+  /* margin-left: 245px; */
+  opacity: 0;
+  visibility: hidden;
+}
+#check:checked ~ label #cancel {
+  /* margin-left: 245px; */
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    height: auto;
+    width: 70px;
+    left: 0;
+    margin: 100px 0;
+  }
+  header,
+  #btn,
+  #cancel {
+    display: none;
+  }
+  span {
+    position: absolute;
+    margin-left: 23px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sidebar a {
+    height: 60px;
+  }
+  .sidebar a i {
+    margin-left: -10px;
+  }
+  a:hover {
+    width: 200px;
+    background: inherit;
+  }
+  .sidebar a:hover span {
+    opacity: 1;
+    visibility: visible;
+    text-decoration: none;
+  }
+}
+
+a.active,
+a:hover {
+  /* border-left: 5px solid #3639ee; */
+  color: #39d5d5;
+}
+.sidebar a i {
+  font-size: 23px;
+  margin-right: 16px;
+}
+.sidebar a span {
+  letter-spacing: 1px;
 }
 </style>
 

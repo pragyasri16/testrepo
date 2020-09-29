@@ -2,7 +2,7 @@
   <div class="wrapper try">
     <!-- <div class="title">Login Form</div> -->
     <h2>Login</h2>
-    <form>
+    <form autocomplete="on">
       <div class="field">
         <input type="email" v-model="email" required />
         <label>Email Address</label>
@@ -15,7 +15,7 @@
       <nuxt-link to class="lcolor">Forget password ?</nuxt-link>
 
       <div class="field">
-        <input type="submit" @click.prevent="login(),addMember()" value="Login" />
+        <input type="submit" @click.prevent="login" value="Login" />
         <!-- @click.prevent="login" -->
       </div>
       <div class="signup-link">
@@ -23,14 +23,11 @@
         <nuxt-link to>Signup Now</nuxt-link>
       </div>
     </form>
-    <!-- <div>
-        <h4 v-for="member in members" :key="member.id">{{member.email}}</h4>
-    </div>-->
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
 export default {
@@ -50,14 +47,15 @@ export default {
     ...mapMutations({
       addUser: 'addUser',
     }),
-    addMember() {
-      let user = {
-        email: this.email,
-      }
-      this.addUser(user)
-      this.email = ''
-      this.pass = ''
-    },
+    ...mapActions('modules/user', ['userlogin']),
+    // addMember() {
+    //   let user = {
+    //     email: this.email,
+    //   }
+    //   this.addUser(user)
+    //   this.email = ''
+    //   this.pass = ''
+    // },
 
     async login() {
       const { user } = await auth.signInWithEmailAndPassword(
@@ -65,9 +63,9 @@ export default {
         this.pass
       )
       let { claims } = await user.getIdTokenResult()
-      // console.log('signin =>', user)
-      // console.log('Admin =>', claims)
-
+      this.userlogin({...user,...claims})
+      console.log('Data',user)
+     
       if (claims.admin == true) {
         this.$router.push('/admin')
       }
@@ -83,7 +81,7 @@ export default {
       // else {
       //   alert('Incorrect username or password.')
       // }
-      //this.$router.push('/admin')
+      
     },
   },
 }

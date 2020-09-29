@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>{{user}}</h2>
     <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
@@ -164,6 +165,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   // middleware: 'auth',
   mounted() {
@@ -185,6 +187,9 @@ export default {
     })
   },
   layout: 'hr',
+  computed: {
+    ...mapState('modules/user', ['user']),
+  },
 }
 </script>
 
@@ -193,5 +198,10 @@ export default {
 
 * {
   margin-left: 250px;
+}
+
+td,
+th {
+  background: white;
 }
 </style>
