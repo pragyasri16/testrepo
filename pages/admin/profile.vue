@@ -66,7 +66,7 @@
         <div class="col-3">
           <input type="text" name="country" id="con" class="form-control" />
         </div>
-       
+    </div>
         
         <button class="btn btn-primary">update</button>
      
