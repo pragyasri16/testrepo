@@ -76,7 +76,7 @@
           <hr />
           <!-- <li @click="newtest">Test</li> -->
           <li>
-            <nuxt-link to="/" >
+            <nuxt-link to="/">
               <i class="fas fa-layer-group"></i>
               <span>Dashboard</span>
             </nuxt-link>
@@ -206,6 +206,7 @@ export default {
         await Cookies.remove('access_token')
         await this.$router.push('/')
         // await window.location.reload()
+        // this.$nuxt.refresh()
       })
     },
   },

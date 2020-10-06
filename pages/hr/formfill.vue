@@ -1,95 +1,7 @@
 <template>
-  <!-- <div class="text back">
-    <form action class="main-form">
-      <div class="row">
-        <div class="col-md-3 col-sm-12">
-          <div class="form-group">
-            <label for="jobtitle">Job Title:</label>
-          </div>
-        </div>
-        <div class="col-md-9 col-sm-12">
-          <input type="text" name="jobtitle" id="jobtitle" class="form-control" />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3 col-sm-12">
-          <div class="form-group">
-            <label for="department">Department:</label>
-          </div>
-        </div>
-        <div class="col-md-9 col-sm-12">
-          <input type="text" name="department" id="department" class="form-control" />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-          <div class="form-group">
-            <label for="salary">Salary:</label>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-4 col-xs-4">
-          <input type="text" name="salary-1" id="salary-1" class="form-control" />
-        </div>
-        <div class="col-md-1 col-sm-2 col-xs-2">to</div>
-        <div class="col-md-3 col-sm-4 col-xs-4">
-          <input type="text" name="salary-2" id="salary-2" class="form-control" />
-        </div>
-        <div class="col-md-1 col-sm-2 col-xs-2">Annual</div>
-      </div>
-
-      <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="experience">Experience:</label>
-          </div>
-        </div>
-        <div class="col-3">
-          <input type="text" name="experience" id="experience" class="form-control" />
-        </div>
-        <div class="col-1">Yrs</div>
-      </div>
-
-      <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="duration">Duration:</label>
-          </div>
-        </div>
-        <div class="col-3">
-          <input type="text" name="date-1" id="date-1" class="form-control" />
-        </div>
-        <div class="col-1">to</div>
-        <div class="col-3">
-          <input type="text" name="date-2" id="date-2" class="form-control" />
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="description">Description:</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-9">
-          <div class="form-group">
-            <textarea name="description" id="description" cols="57" rows="5"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="text-right">
-        <button class="btn btn-primary">Add Test</button>
-        <button class="btn btn-primary">Promote</button>
-      </div>
-    </form>
-  </div>-->
-
   <div class="text back">
-    {{desc}}
-    {{dur1}}
+    <!-- {{desc}}
+    {{dur1}}-->
     <form class="main-form">
       <div class="row">
         <div class="col-md-3 col-sm-12 form-group">
@@ -103,10 +15,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3 col-sm-12">
-          <div class="form-group">
-            <label for="department">Department:</label>
-          </div>
+        <div class="col-md-3 col-sm-12 form-group">
+          <label for="department">Department:</label>
         </div>
         <div class="col-md-9 col-sm-12">
           <input type="text" name="department" id="department" class="form-control" v-model="dname" />
@@ -114,30 +24,27 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-          <div class="form-group">
-            <label for="salary">Salary:</label>
-          </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 form-group">
+          <label for="salary">Salary:</label>
         </div>
         <div class="col-md-3 col-sm-4 col-xs-4">
-          <input type="text" name="salary-1" id="salary-1" class="form-control" v-model="sal1" />
+          <input type="number" name="salary-1" id="salary-1" class="form-control" v-model="sal1" />
         </div>
         <div class="col-md-1 col-sm-2 col-xs-2">to</div>
         <div class="col-md-3 col-sm-4 col-xs-4">
-          <input type="text" name="salary-2" id="salary-2" class="form-control" v-model="sal2" />
+          <input type="number" name="salary-2" id="salary-2" class="form-control" v-model="sal2" />
         </div>
         <div class="col-md-1 col-sm-2 col-xs-2">Annual</div>
       </div>
 
       <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="experience">Experience:</label>
-          </div>
+        <div class="col-3 form-group">
+          <label for="experience">Experience:</label>
         </div>
         <div class="col-3">
           <input
-            type="text"
+            type="number"
+            step="0.1"
             name="experience"
             id="experience"
             class="form-control"
@@ -148,10 +55,8 @@
       </div>
 
       <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="duration">Duration:</label>
-          </div>
+        <div class="col-3 form-group">
+          <label for="duration">Duration:</label>
         </div>
         <div class="col-4">
           <input type="date" name="date-1" id="date-1" class="form-control" v-model="dur1" />
@@ -163,18 +68,14 @@
       </div>
 
       <div class="row">
-        <div class="col-3">
-          <div class="form-group">
-            <label for="description">Description:</label>
-          </div>
+        <div class="col-3 form-group">
+          <label for="description">Description:</label>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <vue-editor class="editor" v-model="desc" />
-            <!-- <textarea name="description" id="description" cols="57" rows="5"></textarea> -->
-          </div>
+        <div class="col-12 form-group">
+          <vue-editor class="editor" v-model="desc" />
+          <!-- <textarea name="description" id="description" cols="57" rows="5"></textarea> -->
         </div>
       </div>
       <div class="text-right">
@@ -187,14 +88,19 @@
           <span v-if="!writeSuccessful">Promote</span>
           <span v-else>Successful!</span>
         </button>
+        <br>
+        {{getId}}
       </div>
     </form>
+    
   </div>
 </template>
 
 <script>
 import firebase from 'firebase'
 import { db } from '../../plugins/firebaseConfig'
+import moment from 'moment'
+import { mapState ,mapGetters} from 'vuex'
 let VueEditor
 if (process.client) {
   VueEditor = require('vue2-editor').VueEditor
@@ -214,13 +120,27 @@ export default {
       dur1: null,
       dur2: null,
       desc: null,
+      date: moment().format('DD/MM/YYYY'),
+      id: uuidv4()
     }
+  },
+  computed:{
+      //  getId(){
+      //   return this.$store.getters.getId
+      //   console.log(this.$store.getters.getId)
+      //  }
+...mapState(['getValue','getId']),
+//  ...mapGetters({
+//       getId: 'getId',
+//     }),
+
+
   },
   // middleware: 'auth',
 
   methods: {
     async writeToFirestore() {
-      const ref = db.collection('jobdetail').doc(uuidv4())
+      const ref = db.collection('jobdetail').doc(this.id)
       const document = {
         jtitle: this.jtitle,
         dname: this.dname,
@@ -230,6 +150,8 @@ export default {
         dur1: this.dur1,
         dur2: this.dur2,
         desc: this.desc,
+        date: this.date,
+        id: this.id
       }
       try {
         await ref.set(document)
@@ -244,6 +166,11 @@ export default {
 </script>
 
 <style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .back {
   background-color: rgb(255, 255, 255);
   padding-top: 20px;

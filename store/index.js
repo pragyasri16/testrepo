@@ -1,8 +1,17 @@
 import { vuexfireMutations } from 'vuexfire'
 import { getUserFromCookie } from '../helper/index'
 
+export const state = () => ({
+    id: null,
+    
+})
+
 export const mutations = {
   ...vuexfireMutations,
+  getValue(state, payload) {
+    state.id = payload
+    console.log('sate', state.id)
+  },
 }
 
 export const actions = {
@@ -38,9 +47,26 @@ export const actions = {
 //     state.members.push(newUser)
 //   },
 // }
+// export const mutation = {
+//   getValue( state,payload) {
+//     state.id = payload
+//     console.log('sate',state.id)
+//   }
+// }
 
 // export const getters = {
 //   getUserById: (state) => (id) => {
 //     return state.members.find((member) => member.id == id)
 //   },
 // }
+export const getters = {
+  getId(state) {
+    return state.id
+  }
+}
+
+// export const getters = () => ({
+//   getId: (state) => {
+//     return state.id
+//   },
+// })
