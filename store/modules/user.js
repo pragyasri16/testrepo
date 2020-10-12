@@ -21,8 +21,10 @@ export const actions = {
         isHr: user.hr,
         isAdmin: user.admin,
         isSadmin: user.sa,
-        uid: user.uid
+        uid: user.uid,
+        name: user.displayName
       }
+      console.log('userlogin', userInfo)
       Cookies.set('access_token', token)
 
       await dispatch('setUSER', userInfo)
@@ -39,5 +41,6 @@ export const actions = {
 export const mutations = {
   setUSER(state, user) {
     state.user = user
+    // console.log("console user",state.user)
   },
 }

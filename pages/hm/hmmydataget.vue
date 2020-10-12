@@ -38,17 +38,14 @@
           <td>{{ item.dname }}</td>
           <td>{{ item.experience }}</td>
           <td>
-            <button
-              type="button"
-              class="btn"
-              @click.prevent="xyz(item.id), deleteboard(item.id)"
-            >
+            <button type="button" class="btn" @click.prevent="xyz(item.id)">
               View Details
             </button>
           </td>
         </tr>
       </tbody>
     </table>
+
     <!-- {{xyz}} -->
     {{ getId }}
   </div>
@@ -66,7 +63,6 @@ export default {
     return {
       data: [],
       count: 0,
-      userid: '',
     }
   },
 
@@ -93,6 +89,7 @@ export default {
     xyz(val) {
       // console.log('Value',val);
       this.$store.commit('getValue', val)
+      localStorage.userid = val
     },
     deleteboard(val) {
       db.collection('jobdetail').doc(val).delete()

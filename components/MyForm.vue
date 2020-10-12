@@ -1,27 +1,27 @@
 <template>
   <div>
-    <!-- class="form-row" -->
-
-    <div
-      class="form-group"
-      v-for="(item, i) in form"
-      :key="i"
-      :class="item.class"
-    >
-      <label>{{ item.label }}</label>
-      <input
-        :type="item.type"
-        class="form-control"
-        :id="item.id"
-        v-model="arr[item.id]"
-        @input="onInput"
-      />
+    <div>
+      <div
+        class="form-group"
+        v-for="(item, i) in form"
+        :key="i"
+        :class="item.class"
+      >
+        <label>{{ item.label }}</label>
+        <input
+          :type="item.type"
+          class="form-control"
+          :id="item.id"
+          v-model="arr[item.id]"
+          @input="onInput"
+        />
+      </div>
     </div>
     <br />
 
-    <vue-editor class="editor col-5" v-model="arr[desc]" />
+    <vue-editor class="editor col-5" @input="onSend" v-model="desc" />
     <div class="col-5 text-right pt-3"><slot name="allbutton"></slot></div>
-    <br /><br />{{ userid }}
+    {{ desc }}
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       arr: [],
-      userid: '',
+      desc: null,
     }
   },
   props: {
@@ -49,21 +49,25 @@ export default {
     onInput() {
       this.$emit('getFormData', Object.assign({}, this.arr))
     },
-  },
-  mounted() {
-    this.userid = localStorage.userid
+    onSend() {
+      this.$emit('getDescData', Object.assign({}, this.desc))
+    },
   },
 }
 </script>
 <style  scoped>
 * {
   margin: auto;
+
   /* background-color: white; */
 }
 
 /* .form-group {
   width: 550px;
 } */
+table {
+  padding: 0;
+}
 
 .text {
   font-weight: bold;
@@ -89,6 +93,7 @@ input::-webkit-inner-spin-button {
 .editor {
   border: 1.5px solid #657285;
   padding: 0;
+  width: 495px;
   /* box-sizing: border-box; */
   box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.2);
   /* border-radius: 10px; */
@@ -102,5 +107,5 @@ login(){
   }
   if(this.email == localStorage.adminemail && this.pass == localStorage.adminpass)
   this.$rous
-  
+
 }

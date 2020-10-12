@@ -20,9 +20,16 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <li v-if="xyz">
-            <h4>{{this.user.email}}</h4>
+            <h4>{{ user.email }}</h4>
           </li>
-          <button type="button" class="btn btn-success" @click="signOut" v-if="xyz">Logout</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            @click="signOut"
+            v-if="xyz"
+          >
+            Logout
+          </button>
           <li class="nav-item" v-if="!xyz">
             <nuxt-link to="/" class="nav-link">Home</nuxt-link>
           </li>
@@ -36,8 +43,22 @@
             <nuxt-link to class="nav-link">Contact</nuxt-link>
           </li>
 
-          <button type="button" class="btn btn-primary" @click.prevent="login" v-if="!xyz">Login</button>
-          <button type="button" class="btn btn-success" @click.prevent="signup" v-if="!xyz">SignUp</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click.prevent="login"
+            v-if="!xyz"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            @click.prevent="signup"
+            v-if="!xyz"
+          >
+            SignUp
+          </button>
         </ul>
       </div>
     </nav>
@@ -130,7 +151,9 @@ import Cookies from 'js-cookie'
 import { auth } from '../plugins/firebaseConfig'
 export default {
   data() {
-    return {}
+    return {
+      name: null,
+    }
   },
   computed: {
     ...mapState('modules/user', ['user']),
@@ -138,7 +161,7 @@ export default {
     //   getUserById: 'getUserById',
     // }),
     xyz() {
-      console.log('user', this.user)
+      // console.log('user', this.user)
       // this.userlogin({ ...user, ...claims })isSadmin: user.sa,
       // let { claims } = await user.getIdTokenResult()
       if (this.user != null) {
@@ -204,13 +227,24 @@ export default {
     signOut() {
       auth.signOut().then(async () => {
         await Cookies.remove('access_token')
-        await this.$router.push('/')
+        // await this.$router.push('/')
         // await window.location.reload()
+
+        await this.$router.push('/loginform')
+        // await window.location.reload()
+
         // this.$nuxt.refresh()
       })
     },
   },
-
+  created() {
+    // console.log('Hi this is me')
+    // var pra = auth.currentUser
+    // if (pra != null) {
+    //   this.name = pra.displayName
+    // }
+    // alert('vghcjh')
+  },
   mounted() {
     // let testuser = auth.currentUser.getIdTokenResult()
     // console.log(testuser)
@@ -351,7 +385,8 @@ label #cancel {
   opacity: 1;
   visibility: visible;
 }
-@media (max-width: 860px) {
+
+/* @media (max-width: 860px) {
   .sidebar {
     height: auto;
     width: 70px;
@@ -384,7 +419,7 @@ label #cancel {
     visibility: visible;
     text-decoration: none;
   }
-}
+} */
 </style>
 
 

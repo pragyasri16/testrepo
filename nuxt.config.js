@@ -1,4 +1,8 @@
 export default {
+  // Middleware
+  // router: {
+  //   middleware: 'auth',
+  // },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -59,7 +63,7 @@ export default {
       {
         src: 'https://kit.fontawesome.com/a076d05399.js',
       },
-      { src: 'https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js'}
+      { src: 'https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js' },
     ],
   },
   /*

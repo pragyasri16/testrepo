@@ -22,22 +22,37 @@ import firebase from 'firebase'
 import { db } from '../../plugins/firebaseConfig'
 import moment from 'moment'
 import { v4 as uuidv4 } from 'uuid'
-import { jobform } from '../../helper/form'
+import { hrform } from '../../helper/form'
 import MyForm from '../../components/MyForm'
 
 export default {
   data() {
     return {
-      abc: jobform,
+      abc: hrform,
       info: [],
       date: moment().format('DD/MM/YYYY'),
       writeSuccessful: false,
     }
   },
+  //Change uuidv4()
+  created() {
+    db.collection('dynamicformdetails').where('id','==', 'testdoc')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.info.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+          // this.qwer = doc.get('cname')
+          // console.log('name', cName)
+        })
+      })
+  },
   layout: 'hr',
   methods: {
     async writeToFirestore() {
-      const ref = db.collection('dynamicformdetails').doc(uuidv4())
+      const ref = db.collection('dynamicformdetails').doc('testdoc')
       const document = {
         info: this.info,
         date: this.date,

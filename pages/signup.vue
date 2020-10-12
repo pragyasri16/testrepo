@@ -12,11 +12,11 @@
             id="Name"
             class="form-control"
             placeholder="Contact person name"
+            v-model="name"
           />
         </div>
       </div>
-      
-     
+
       <!-- E-mail -->
       <input
         v-model="email"
@@ -38,16 +38,18 @@
       <small
         id="defaultRegisterFormPasswordHelpBlock"
         class="form-text text-muted mb-4"
-      >At least 8 characters and 1 digit</small>
+        >At least 8 characters and 1 digit</small
+      >
 
-     
       <!-- Sign up button -->
-      <button class="btn btn-info my-4 btn-block" @click.prevent="signup">SUBMIT</button>
+      <button class="btn btn-info my-4 btn-block" @click.prevent="signup">
+        SUBMIT
+      </button>
       <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->
     </form>
     <!-- Default form register -->
     <pre>
-      {{email}}-{{pass}}-{{name}}
+      {{ email }}-{{ pass }}-{{ name }}
     </pre>
   </div>
 </template>
@@ -62,7 +64,7 @@ export default {
       name: '',
     }
   },
-  methods: {    
+  methods: {
     async signup() {
       const { user } = await auth.createUserWithEmailAndPassword(
         this.email,
@@ -76,8 +78,31 @@ export default {
       let callable = firebase.functions().httpsCallable('customeClaims')
       const res = await callable(data)
       const { claims } = await user.getIdTokenResult()
-      // console.log('user => ', user)
+      console.log('user => ', user)
       // console.log('claims => ', claims)
+      user
+        .updateProfile({
+          displayName: this.name,
+        })
+        .then(function () {
+          // Update successful.
+          alert('Name assigned')
+        })
+        .catch(function (error) {
+          // An error happened.
+          alert('Error')
+        })
+
+      user
+        .sendEmailVerification()
+        .then(function () {
+          // Email sent.
+          alert('Check your mail for verification.')
+        })
+        .catch(function (error) {
+          // An error happened.
+          alert('Error creating account.')
+        })
     },
   },
 }

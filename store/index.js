@@ -26,6 +26,7 @@ export const actions = {
           isAdmin: user.admin,
           isSadmin: user.sa,
           uid: user.user_id,
+          name: user.name
         })
       }
       // console.log('index user', user)

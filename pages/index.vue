@@ -39,7 +39,7 @@ export default {
       asdf: uuidv4(),
       qwer: moment().format('DD/MM/YYYY'),
       display: Date(),
-      userid: '',
+      userid: null,
     }
   },
 
@@ -57,8 +57,6 @@ export default {
       }),
       (this.userid = localStorage.userid)
   },
-
-
 }
 </script>
 <style>
