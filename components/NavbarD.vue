@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-md navbar-light ">
+    <nav class="navbar navbar-expand-md navbar-light">
       <!-- Brand -->
       <h2>LOGO</h2>
 
@@ -18,7 +18,13 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <!-- <li>{{getUserById($route.params.id)}}</li> -->
-          <button type="button" class="btn btn-success" @click.prevent="signOut">Logout</button>
+          <button
+            type="button"
+            class="btn btn-success"
+            @click.prevent="signOut"
+          >
+            Logout
+          </button>
 
           <li class="nav-item">
             <nuxt-link to="/" class="nav-link">Home</nuxt-link>
@@ -33,8 +39,20 @@
             <nuxt-link to class="nav-link">Contact</nuxt-link>
           </li>
 
-          <button type="button" class="btn btn-primary" @click.prevent="login()">Login</button>
-          <button type="button" class="btn btn-success" @click.prevent="signup()">SignUp</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click.prevent="login()"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            @click.prevent="signup()"
+          >
+            SignUp
+          </button>
         </ul>
       </div>
     </nav>
@@ -107,7 +125,7 @@ export default {
   // },
 
   methods: {
-     login() {
+    login() {
       this.$router.push('/loginform')
     },
     signup() {
@@ -115,7 +133,7 @@ export default {
     },
     signOut() {
       auth.signOut().then(() => {
-        this.$router.push('/')
+        this.$router.go('/')
       })
     },
   },
@@ -133,7 +151,6 @@ h2 {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: white;
-
 }
 .nav-item {
   padding-top: 5px;
