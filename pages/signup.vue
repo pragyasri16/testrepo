@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <!-- Default form register -->
-    <form class="text-center border border-light p-5" action="#!">
+    <form class="text-center border border-light p-5">
       <p align="left" class="h4 mb-4">Sign up</p>
 
       <div class="form-row mb-4">
@@ -45,12 +45,62 @@
       <button class="btn btn-info my-4 btn-block" @click.prevent="signup">
         SUBMIT
       </button>
+      <button
+        class="btn btn-primary my-4 btn-block"
+        type="button"
+        :disabled="load"
+        data-toggle="modal"
+        data-target="#forgetPass"
+      >
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+          v-if="load"
+        ></span>
+        Submit
+      </button>
       <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->
     </form>
     <!-- Default form register -->
     <pre>
       {{ email }}-{{ pass }}-{{ name }}
     </pre>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="forgetPass"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
+        <div class="modal-content text-center">
+          <!-- <div class="modal-header"> -->
+          <button
+            type="button"
+            class="close ml-auto"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <!-- </div> -->
+          <div class="modal-body">
+            <h3>Check Your Mail</h3>
+          </div>
+          <!-- <div class="modal-footer mt-3">
+            
+            <button type="button" class="btn btn-primary p-2 mr-3">
+              Save changes
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -62,10 +112,13 @@ export default {
       email: '',
       pass: '',
       name: '',
+      load: false,
     }
   },
   methods: {
     async signup() {
+      this.load = true
+
       const { user } = await auth.createUserWithEmailAndPassword(
         this.email,
         this.pass
@@ -92,7 +145,6 @@ export default {
           // An error happened.
           alert('Error')
         })
-
       user
         .sendEmailVerification()
         .then(function () {

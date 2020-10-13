@@ -66,6 +66,7 @@
             >
               Submit
             </button>
+            
           </div>
           <!-- <div class="modal-footer mt-3">
             
@@ -123,7 +124,7 @@ export default {
 
       if (user.emailVerified == true) {
         this.userlogin({ ...user, ...claims })
-        // console.log('Data', user)
+        console.log('Data', user)
         if (claims.admin == true) {
           // setTimeout(() => {
           //    window.location.reload()
