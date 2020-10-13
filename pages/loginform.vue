@@ -133,24 +133,24 @@ export default {
           // alert('Admin login')
 
           // this.$router.go('/admin')
-          this.$router.push('/admin')
+          // this.$router.push('/admin')
         }
         if (claims.hr == true) {
-          // setTimeout(() => {
-          //   window.location.reload()
-          // }, 1000)
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
           this.$router.push('/hr')
         }
         if (claims.hm == true) {
-          // setTimeout(() => {
-          //   window.location.reload()
-          // }, 1000)
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
           this.$router.push('/hm')
         }
         if (claims.sa == true) {
-          // setTimeout(() => {
-          //   window.location.reload()
-          // }, 1000)
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
           this.$router.push('/superadmin')
         }
       } else {

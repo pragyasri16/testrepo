@@ -1,8 +1,8 @@
 export default {
   // Middleware
-  // router: {
-  //   middleware: ['auth'],
-  // },
+  router: {
+    middleware: ['auth'],
+  },
 
   router: {
     middleware: ['auth', 'handle-login-route']

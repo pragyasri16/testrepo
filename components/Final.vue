@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
           <li v-if="xyz">
-            <h4>{{ user.email }}</h4>
+            <h4>{{ user.name }}</h4>
           </li>
           <button
             type="button"
