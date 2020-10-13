@@ -126,9 +126,9 @@ export default {
         this.userlogin({ ...user, ...claims })
         console.log('Data', user)
         if (claims.admin == true) {
-          // setTimeout(() => {
-          //    window.location.reload()
-          // }, 1000);
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
 
           // alert('Admin login')
 

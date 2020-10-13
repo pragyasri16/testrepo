@@ -24,7 +24,6 @@ export const actions = {
         uid: user.uid,
         name: user.displayName
       }
-      console.log('userlogin', userInfo)
       Cookies.set('access_token', token)
 
       await dispatch('setUSER', userInfo)

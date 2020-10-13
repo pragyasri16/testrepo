@@ -28,7 +28,7 @@
             @click="signOut"
             v-if="xyz"
           >
-            Logout
+            Logout1
           </button>
           <li class="nav-item" v-if="!xyz">
             <nuxt-link to="/" class="nav-link">Home</nuxt-link>
@@ -227,13 +227,7 @@ export default {
     signOut() {
       auth.signOut().then(async () => {
         await Cookies.remove('access_token')
-        // await this.$router.push('/')
-        // await window.location.reload()
-
-        await this.$router.push('/loginform')
-        // await window.location.reload()
-
-        // this.$nuxt.refresh()
+        await window.location.reload()
       })
     },
   },
