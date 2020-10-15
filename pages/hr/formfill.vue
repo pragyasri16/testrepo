@@ -10,7 +10,13 @@
           </div>
         </div>
         <div class="col-md-9 col-sm-12">
-          <input type="text" name="jobtitle" id="jobtitle" class="form-control" v-model="jtitle" />
+          <input
+            type="text"
+            name="jobtitle"
+            id="jobtitle"
+            class="form-control"
+            v-model="jtitle"
+          />
         </div>
       </div>
 
@@ -19,7 +25,13 @@
           <label for="department">Department:</label>
         </div>
         <div class="col-md-9 col-sm-12">
-          <input type="text" name="department" id="department" class="form-control" v-model="dname" />
+          <input
+            type="text"
+            name="department"
+            id="department"
+            class="form-control"
+            v-model="dname"
+          />
         </div>
       </div>
 
@@ -59,11 +71,23 @@
           <label for="duration">Duration:</label>
         </div>
         <div class="col-4">
-          <input type="date" name="date-1" id="date-1" class="form-control" v-model="dur1" />
+          <input
+            type="date"
+            name="date-1"
+            id="date-1"
+            class="form-control"
+            v-model="dur1"
+          />
         </div>
         <div class="col-1">to</div>
         <div class="col-4">
-          <input type="date" name="date-2" id="date-2" class="form-control" v-model="dur2" />
+          <input
+            type="date"
+            name="date-2"
+            id="date-2"
+            class="form-control"
+            v-model="dur2"
+          />
         </div>
       </div>
 
