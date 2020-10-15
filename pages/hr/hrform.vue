@@ -62,7 +62,7 @@ export default {
       }
       try {
         await ref.set(document)
-      } catch (e) {
+      } catch (e) { 
         // TODO: error handling
         console.error(e)
       }
