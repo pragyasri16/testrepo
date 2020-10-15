@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>{{user}}</h2>
-    <table id="example" class="display" style="width:100%">
+    <h2>{{ user }}</h2>
+    <table id="example" class="display" style="width: 100%">
       <thead>
         <tr>
           <th>No.</th>

@@ -3,19 +3,24 @@
     <div class="container">
       <Logo />
       <h1 class="title">Shubhang</h1>
-      {{asdf}}
+      {{ asdf }}
       <br />
       <br />
-      {{qwer}}
-      <!-- {{data[0].cname}} -->
+      {{ display }}
+      <br />
+      <br />
+      {{ qwer }}
+      <br /><br />
+      {{ userid }}
     </div>
 
-    <h2 class="abc">Accessing data in Firestore</h2>
-    {{data}}
+    <!-- <h2 class="abc">Accessing data in Firestore</h2>
+
     <div v-for="item in data" :key="item" class="abc">
       <div v-for="ele in item" :key="ele">{{ele}}</div>
+
       <br />
-    </div>
+    </div>-->
   </div>
 </template> 
 
@@ -25,27 +30,22 @@ import firebase from 'firebase'
 import { db } from '../plugins/firebaseConfig'
 // const { uuid } = require('uuid')
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 
 export default {
   data() {
     return {
       data: [],
       asdf: uuidv4(),
-      qwer: null,
+      qwer: moment().format('DD/MM/YYYY'),
+      display: Date(),
+      userid: null,
     }
   },
-  methods: {
-    // xyz() {
-    //   var your_uuid = uuid()
-    //   console.log('data', your_uuid)
-    // },
-  },
-  // created() {
-  //   console.log('data', uuidv4())
-  // },
 
   mounted() {
-    db.collection('company')
+    db
+      .collection('company')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -53,24 +53,10 @@ export default {
             id: doc.id,
             ...doc.data(),
           })
-          this.qwer = doc.get('cname')
-          console.log('name', cName)
         })
-      })
+      }),
+      (this.userid = localStorage.userid)
   },
-
-  // beforeCreate() {
-  //   db.collection('company')
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //         this.data.push({
-  //           id: doc.id,
-  //           ...doc.data(),
-  //         })
-  //       })
-  //     })
-  // },
 }
 </script>
 <style>
@@ -104,6 +90,14 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.card {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.list-group-item:hover {
+  background-color: #f1f3f5;
+  cursor: pointer;
 }
 </style>
 

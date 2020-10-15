@@ -22,6 +22,8 @@ export default {}
 * {
   background-color: #f1f3f5;
 }
-
+#check:checked ~ .sidebar{
+  background: aqua;
+}
 
 </style>

@@ -2,6 +2,7 @@
   <div class="wrapper try">
     <!-- <div class="title">Login Form</div> -->
     <h2>Login</h2>
+    {{ name }}
     <form autocomplete="on">
       <div class="field">
         <input type="email" v-model="email" required />
@@ -11,9 +12,15 @@
         <input type="password" v-model="pass" required />
         <label>Password</label>
       </div>
-
-      <nuxt-link to class="lcolor">Forget password ?</nuxt-link>
-
+      <div class="text-center pt-1">
+        <nuxt-link
+          to
+          class="lcolor"
+          data-toggle="modal"
+          data-target="#forgetPass"
+          >Forget password ?</nuxt-link
+        >
+      </div>
       <div class="field">
         <input type="submit" @click.prevent="login" value="Login" />
         <!-- @click.prevent="login" -->
@@ -23,11 +30,58 @@
         <nuxt-link to>Signup Now</nuxt-link>
       </div>
     </form>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="forgetPass"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
+        <div class="modal-content text-center">
+          <!-- <div class="modal-header"> -->
+          <button
+            type="button"
+            class="close ml-auto"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="mt-1">Enter Valid Email</h4>
+          <!-- </div> -->
+          <div class="modal-body">
+            <input
+              type="email"
+              class="mt-2 p-1"
+              v-model="forgetpass"
+            /><br /><br />
+            <button
+              type="button"
+              class="btn btn-primary p-2"
+              @click.prevent="forget"
+            >
+              Submit
+            </button>
+            
+          </div>
+          <!-- <div class="modal-footer mt-3">
+            
+            <button type="button" class="btn btn-primary p-2 mr-3">
+              Save changes
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
 export default {
@@ -35,12 +89,12 @@ export default {
     return {
       email: '',
       pass: '',
+      forgetpass: null,
+      name: null,
     }
   },
   computed: {
-    ...mapState({
-      members: (state) => state.members,
-    }),
+    ...mapGetters('modules/user', ['user']),
   },
 
   methods: {
@@ -48,14 +102,18 @@ export default {
       addUser: 'addUser',
     }),
     ...mapActions('modules/user', ['userlogin']),
-    // addMember() {
-    //   let user = {
-    //     email: this.email,
-    //   }
-    //   this.addUser(user)
-    //   this.email = ''
-    //   this.pass = ''
-    // },
+    forget() {
+      auth
+        .sendPasswordResetEmail(this.forgetpass)
+        .then(function () {
+          // Email sent.
+          alert('Check email')
+        })
+        .catch(function (error) {
+          // An error happened.
+          alert('Error')
+        })
+    },
 
     async login() {
       const { user } = await auth.signInWithEmailAndPassword(
@@ -63,25 +121,45 @@ export default {
         this.pass
       )
       let { claims } = await user.getIdTokenResult()
-      this.userlogin({...user,...claims})
-      console.log('Data',user)
-     
-      if (claims.admin == true) {
-        this.$router.push('/admin')
+
+      if (user.emailVerified == true) {
+        this.userlogin({ ...user, ...claims })
+        console.log('Data', user)
+        if (claims.admin == true) {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+
+          // alert('Admin login')
+
+          // this.$router.go('/admin')
+          // this.$router.push('/admin')
+        }
+        if (claims.hr == true) {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+          this.$router.push('/hr')
+        }
+        if (claims.hm == true) {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+          this.$router.push('/hm')
+        }
+        if (claims.sa == true) {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000)
+          this.$router.push('/superadmin')
+        }
+      } else {
+        alert('Check your registered email for verification link .')
       }
-      if (claims.hr == true) {
-        this.$router.push('/hr')
-      }
-      if (claims.hm == true) {
-        this.$router.push('/hm')
-      }
-      if (claims.sa == true) {
-        this.$router.push('/superadmin')
-      }
+
       // else {
       //   alert('Incorrect username or password.')
       // }
-      
     },
   },
 }
@@ -89,6 +167,9 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.modal-content {
+  margin: auto;
+}
 * {
   margin: 0;
   padding: 0;
@@ -113,6 +194,7 @@ h2 {
   border-radius: 15px;
   margin: auto;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
 }
 
 form {

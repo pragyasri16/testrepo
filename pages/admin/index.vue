@@ -1,21 +1,27 @@
 <template>
   <div class="text back">
-    <h2>{{user}}</h2>
+    <h2>{{ user }}</h2>
     <form class="main-form">
       <div class="row">
-        <div class="col-md-4 col-sm-12 form-group">
+        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
           <label for="cname">Company Name:</label>
         </div>
-        <div class="col-md-8 col-sm-12">
-          <input type="text" name="cname" id="cname" class="form-control" v-model="cname" />
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <input
+            type="text"
+            name="cname"
+            id="cname"
+            class="form-control"
+            v-model="cname"
+          />
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-4 col-sm-12 form-group">
+        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
           <label for="caddress">Address:</label>
         </div>
-        <div class="col-md-8 col-sm-12">
+        <div class="col-md-5 col-sm-12 col-xs-12">
           <input
             type="text"
             name="department"
@@ -32,8 +38,14 @@
             <label for="state">State:</label>
           </div>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
-          <input type="text" name="state" id="state" class="form-control" v-model="state" />
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <input
+            type="text"
+            name="state"
+            id="state"
+            class="form-control"
+            v-model="state"
+          />
         </div>
       </div>
 
@@ -43,16 +55,28 @@
             <label for="country">Country:</label>
           </div>
         </div>
-        <div class="col-md-4 col-sm-12 col-xs-12">
-          <input type="text" name="country" id="country" class="form-control" v-model="country" />
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <input
+            type="text"
+            name="country"
+            id="country"
+            class="form-control"
+            v-model="country"
+          />
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4 col-sm-12 form-group">
+        <div class="col-md-4 col-sm-12 col-xs-12 form-group">
           <label for="cnum">Contact Number:</label>
         </div>
-        <div class="col-md-4 col-sm-12">
-          <input type="tel" name="cnum" id="cnum" class="form-control" v-model="cnum" />
+        <div class="col-md-5 col-sm-12 col-xs-12y">
+          <input
+            type="tel"
+            name="cnum"
+            id="cnum"
+            class="form-control"
+            v-model="cnum"
+          />
         </div>
       </div>
 
@@ -67,12 +91,12 @@
         </button>
       </div>
     </form>
-    {{entry[1]}}
+    <!-- {{ entry[1] }}
     <h2 class="abc">Accessing data in Firestore</h2>
     <div v-for="item in entry" :key="item" class="col">
-      <div v-for="ele in item" :key="ele">{{ele}}</div>
+      <div v-for="ele in item" :key="ele">{{ ele }}</div>
       <br />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -92,6 +116,7 @@ export default {
       entry: [],
     }
   },
+  // middleware: 'auth',
   layout: 'admin',
   computed: {
     ...mapState('modules/user', ['user']),
@@ -139,7 +164,7 @@ export default {
   margin-right: 30px;
 }
 .main-form {
-  width: 600px;
+  /* width: 600px; */
   margin-left: 30px;
 }
 
