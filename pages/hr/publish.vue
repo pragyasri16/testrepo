@@ -33,6 +33,7 @@
             </button>
           </td>
         </tr> -->
+
         <tr v-for="(item, i) in data" :key="i++">
           <td>{{ i++ }}</td>
           <td>{{ item.date }}</td>
@@ -40,7 +41,7 @@
           <td>{{ item.info.dname }}</td>
           <td>{{ item.info.experience }}</td>
           <td>
-            <button type="button" class="btn" @click.prevent="deleteboard(item.id)">
+            <button type="button" class="btn" @click.prevent="">
               View Details
             </button>
           </td>
@@ -71,7 +72,7 @@ export default {
   // middleware: 'auth',
   //.where('id', '==', 'job1')
   created() {
-    db.collection('dynamicformdetails')
+    db.collection('postedjobs')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -88,17 +89,12 @@ export default {
     // xyz() {
     //   this.$router.push('/hr/formfill')
     // },
-    xyz(val) {
+    xyz() {
       // console.log('Value',val);
-      this.$store.commit('getValue', val)
-      localStorage.userid = val
-    },
-    deleteboard(val) {
-      db.collection('dynamicformdetails').doc(val).delete()
-      window.location.reload()
+      this.$router.push('/hr/hrform')
     },
   },
-  layout: 'hm',
+  layout: 'hr',
   computed: {
     ...mapState('modules/user', ['user']),
     ...mapGetters({

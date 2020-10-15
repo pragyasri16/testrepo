@@ -7,6 +7,15 @@
           <div class="form-group">
             <input
               type="text"
+              id="Name"
+              class="form-control"
+              placeholder="Name *"
+              v-model="name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
               class="form-control"
               placeholder=" Email *"
               v-model="email"
@@ -53,7 +62,7 @@
               SUBMIT
             </button>
           </div>
-          {{ roles }}
+          <!-- {{ roles }} -->
         </form>
       </div>
     </div>
@@ -69,13 +78,19 @@ export default {
       email: null,
       pass: null,
       roles: null,
+      name: '',
     }
   },
   layout: 'admin',
 
   methods: {
     async signup() {
-      if (this.roles == null || this.email == null || this.pass == null) {
+      if (
+        this.roles == null ||
+        this.email == null ||
+        this.pass == null ||
+        this.name == null
+      ) {
         alert('Please fill all details.')
       } else {
         const { user } = await auth.createUserWithEmailAndPassword(
@@ -85,27 +100,48 @@ export default {
         // console.log('user =>', user)
 
         // var setRole = this.roles
-        if(this.roles=='hr')
-        {
+        if (this.roles == 'hr') {
           let data = {
-          uid: user.uid,
-          role: { hr: true },
+            uid: user.uid,
+            role: { hr: true },
+          }
+          let callable = firebase.functions().httpsCallable('customeClaims')
+          const res = await callable(data)
+          const { claims } = await user.getIdTokenResult()
         }
-        let callable = firebase.functions().httpsCallable('customeClaims')
-        const res = await callable(data)
-        const { claims } = await user.getIdTokenResult()
-        }
-        if(this.roles=='hm'){
+        if (this.roles == 'hm') {
           let data = {
-          uid: user.uid,
-          role: { hm: true },
+            uid: user.uid,
+            role: { hm: true },
+          }
+          let callable = firebase.functions().httpsCallable('customeClaims')
+          const res = await callable(data)
+          const { claims } = await user.getIdTokenResult()
         }
-        let callable = firebase.functions().httpsCallable('customeClaims')
-        const res = await callable(data)
-        const { claims } = await user.getIdTokenResult()
-        }
-       
-        
+        user
+          .updateProfile({
+            displayName: this.name,
+          })
+          .then(function () {
+            // Update successful.
+            // alert('Name assigned')
+          })
+          .catch(function (error) {
+            // An error happened.
+            alert('Error')
+          })
+        user
+          .sendEmailVerification()
+          .then(function () {
+            // Email sent.
+            alert('Account Created')
+            // return true
+          })
+          .catch(function (error) {
+            // An error happened.
+            alert('Error creating account.')
+          })
+
         // console.log('setRole=', setRole)
         // console.log('role=', role)
         // let callable = firebase.functions().httpsCallable('customeClaims')

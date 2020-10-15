@@ -2,6 +2,8 @@
   <div>
     <MyForm :form="abc" v-on:getFormData="info = { ...$event }">
       <template v-slot:allbutton>
+        <button class="btn btn-primary">Add Test</button>
+
         <button
           class="btn btn-primary mx-auto"
           @click.prevent="writeToFirestore"
@@ -35,24 +37,25 @@ export default {
     }
   },
   //Change uuidv4()
-  created() {
-    db.collection('dynamicformdetails').where('id','==', 'testdoc')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          this.info.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-          // this.qwer = doc.get('cname')
-          // console.log('name', cName)
-        })
-      })
-  },
+  // created() {
+  //   db.collection('dynamicformdetails')
+  //     .where('id', '==', 'testdoc')
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         this.info.push({
+  //           id: doc.id,
+  //           ...doc.data(),
+  //         })
+  //         // this.qwer = doc.get('cname')
+  //         // console.log('name', cName)
+  //       })
+  //     })
+  // },
   layout: 'hr',
   methods: {
     async writeToFirestore() {
-      const ref = db.collection('dynamicformdetails').doc('testdoc')
+      const ref = db.collection('postedjobs').doc(uuidv4())
       const document = {
         info: this.info,
         date: this.date,
@@ -70,9 +73,9 @@ export default {
 </script>
 
 <style scoped>
-/* * {
+* {
   background-color: white;
-} */
+}
 /* button {
   color: black;
 } */

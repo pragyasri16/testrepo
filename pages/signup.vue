@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <!-- Default form register -->
-    <form class="text-center border border-light p-5">
+    <form class="text-center border border-light p-5" @submit.prevent="signup">
       <p align="left" class="h4 mb-4">Sign up</p>
 
       <div class="form-row mb-4">
@@ -35,19 +35,18 @@
         placeholder="Password"
         aria-describedby="defaultRegisterFormPasswordHelpBlock"
       />
-      <small
+      <!-- <small
         id="defaultRegisterFormPasswordHelpBlock"
         class="form-text text-muted mb-4"
         >At least 8 characters and 1 digit</small
-      >
+      > -->
 
       <!-- Sign up button -->
-      <button class="btn btn-info my-4 btn-block" @click.prevent="signup">
-        SUBMIT
-      </button>
-      <button
+      <button class="btn btn-info my-4 btn-block">SUBMIT</button>
+      <!-- <button
         class="btn btn-primary my-4 btn-block"
         type="button"
+        @click.prevent=""
         :disabled="load"
         data-toggle="modal"
         data-target="#forgetPass"
@@ -59,13 +58,13 @@
           v-if="load"
         ></span>
         Submit
-      </button>
+      </button> -->
       <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->
     </form>
     <!-- Default form register -->
-    <pre>
+    <!-- <pre>
       {{ email }}-{{ pass }}-{{ name }}
-    </pre>
+    </pre> -->
 
     <!-- Modal -->
     <div
@@ -139,7 +138,7 @@ export default {
         })
         .then(function () {
           // Update successful.
-          alert('Name assigned')
+          // alert('Name assigned')
         })
         .catch(function (error) {
           // An error happened.
@@ -150,6 +149,7 @@ export default {
         .then(function () {
           // Email sent.
           alert('Check your mail for verification.')
+          // return true
         })
         .catch(function (error) {
           // An error happened.

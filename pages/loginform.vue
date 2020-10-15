@@ -66,7 +66,6 @@
             >
               Submit
             </button>
-            
           </div>
           <!-- <div class="modal-footer mt-3">
             
@@ -139,19 +138,19 @@ export default {
           setTimeout(() => {
             window.location.reload()
           }, 1000)
-          this.$router.push('/hr')
+          // this.$router.push('/hr')
         }
         if (claims.hm == true) {
           setTimeout(() => {
             window.location.reload()
           }, 1000)
-          this.$router.push('/hm')
+          // this.$router.push('/hm')
         }
         if (claims.sa == true) {
           setTimeout(() => {
             window.location.reload()
           }, 1000)
-          this.$router.push('/superadmin')
+          // this.$router.push('/superadmin')
         }
       } else {
         alert('Check your registered email for verification link .')
