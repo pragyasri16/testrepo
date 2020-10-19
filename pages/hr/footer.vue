@@ -33,12 +33,17 @@
         <option value="Marketing">Marketing</option>
         <option value="Sales">Sales</option>
       </select> -->
+
+      <!-- Work form here  -->
       <select v-model="lname" v-for="item in data" :key="item">
         <div v-for="xyz in item" :key="xyz">
           <option value="xyz">{{ xyz }}</option>
         </div>
       </select>
+      <!-- To here -->
 
+      <!-- Example of for loop accessing the data form firestore from collection
+      (questionset) and document (language-options) -->
       <div v-for="item in data" :key="item">
         <div v-for="xyz in item" :key="xyz">
           {{ xyz }}
