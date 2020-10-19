@@ -113,7 +113,7 @@
             </nuxt-link>
           </li>
           <li v-if="hrsb">
-            <nuxt-link to="/">
+            <nuxt-link to="/hr/footer">
               <i class="fas fa-book-open"></i>
               <span>Questions</span>
             </nuxt-link>
@@ -229,22 +229,7 @@ export default {
       })
     },
   },
-  created() {
-    // console.log('Hi this is me')
-    // var pra = auth.currentUser
-    // if (pra != null) {
-    //   this.name = pra.displayName
-    // }
-    // alert('vghcjh')
-  },
-  mounted() {
-    // let testuser = auth.currentUser.getIdTokenResult()
-    // console.log(testuser)
-    // auth.onAuthStateChanged((user) => {
-    //   this.user = user
-    //   console.log(auth.currentUser.getIdTokenResult())
-    // })
-  },
+  
 }
 </script>
 
