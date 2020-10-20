@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{lname}}
     <div class="card mx-auto" style="width: 20rem">
       <div class="card-header">
         <label class="card-text"> Question :</label>
@@ -36,19 +37,17 @@
 
       <!-- Work form here  -->
       <select v-model="lname" v-for="item in data" :key="item">
-        <div v-for="xyz in item" :key="xyz">
-          <option value="xyz">{{ xyz }}</option>
-        </div>
+          <option v-for="xyz in item" :key="xyz" :value="xyz">{{ xyz }}</option>
       </select>
       <!-- To here -->
 
       <!-- Example of for loop accessing the data form firestore from collection
       (questionset) and document (language-options) -->
-      <div v-for="item in data" :key="item">
+      <!-- <div v-for="item in data" :key="item">
         <div v-for="xyz in item" :key="xyz">
           {{ xyz }}
         </div>
-      </div>
+      </div> -->
 
       <!-- <select v-model="lname">
         <option value="other">Other</option>
