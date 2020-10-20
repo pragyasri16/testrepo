@@ -1,6 +1,6 @@
 <template>
   <div class="text back">
-    <h2>{{ user }}</h2>
+    <!-- <h2>{{ user }}</h2> -->
     <form class="main-form">
       <div class="row">
         <div class="col-md-4 col-sm-12 col-xs-12 form-group">
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <div class="text-right">
+      <div class="text-center">
         <button
           class="btn btn-primary"
           @click.prevent="writeToFirestore"

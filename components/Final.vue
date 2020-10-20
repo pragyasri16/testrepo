@@ -19,16 +19,14 @@
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav ml-auto">
-          <li v-if="xyz">
-            <h4>{{ user.name }}</h4>
-          </li>
+          <h4 v-if="xyz">{{ user.name }}</h4>
           <button
             type="button"
             class="btn btn-success"
             @click="signOut"
             v-if="xyz"
           >
-            Logout1
+            Logout
           </button>
           <li class="nav-item" v-if="!xyz">
             <nuxt-link to="/" class="nav-link">Home</nuxt-link>
@@ -103,7 +101,7 @@
             </nuxt-link>
           </li>
           <li v-if="hrsb">
-            <nuxt-link to="/hr/mytable">
+            <nuxt-link to="/hr/publish">
               <i class="far fa-paper-plane"></i>
               <span>Publish</span>
             </nuxt-link>
@@ -115,7 +113,7 @@
             </nuxt-link>
           </li>
           <li v-if="hrsb">
-            <nuxt-link to="/">
+            <nuxt-link to="/hr/footer">
               <i class="fas fa-book-open"></i>
               <span>Questions</span>
             </nuxt-link>
@@ -127,7 +125,7 @@
             </nuxt-link>
           </li>
           <li v-if="hmsb">
-            <nuxt-link to="/hm/sent">
+            <nuxt-link to="/hm/hmmydataget">
               <i class="far fa-paper-plane"></i>
               <span>Sent</span>
             </nuxt-link>
@@ -231,22 +229,7 @@ export default {
       })
     },
   },
-  created() {
-    // console.log('Hi this is me')
-    // var pra = auth.currentUser
-    // if (pra != null) {
-    //   this.name = pra.displayName
-    // }
-    // alert('vghcjh')
-  },
-  mounted() {
-    // let testuser = auth.currentUser.getIdTokenResult()
-    // console.log(testuser)
-    // auth.onAuthStateChanged((user) => {
-    //   this.user = user
-    //   console.log(auth.currentUser.getIdTokenResult())
-    // })
-  },
+  
 }
 </script>
 

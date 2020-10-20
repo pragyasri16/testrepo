@@ -2,8 +2,8 @@
   <div>
     <div class="container">
       <Logo />
-      <h1 class="title">Shubhang</h1>
-      {{ asdf }}
+      <h1 class="title">Job Hire</h1>
+      <!-- {{ asdf }}
       <br />
       <br />
       {{ display }}
@@ -11,7 +11,7 @@
       <br />
       {{ qwer }}
       <br /><br />
-      {{ userid }}
+      {{ userid }} -->
     </div>
 
     <!-- <h2 class="abc">Accessing data in Firestore</h2>

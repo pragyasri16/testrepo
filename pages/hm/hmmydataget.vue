@@ -14,6 +14,7 @@
       <thead>
         <tr>
           <th>Sr. No.</th>
+          <th>Date</th>
           <th>Job Title</th>
           <th>Department</th>
           <th>Experience</th>
@@ -34,11 +35,12 @@
         </tr> -->
         <tr v-for="(item, i) in data" :key="i++">
           <td>{{ i++ }}</td>
-          <td>{{ item.jtitle }}</td>
-          <td>{{ item.dname }}</td>
-          <td>{{ item.experience }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.info.jtitle }}</td>
+          <td>{{ item.info.dname }}</td>
+          <td>{{ item.info.experience }}</td>
           <td>
-            <button type="button" class="btn" @click.prevent="xyz(item.id)">
+            <button type="button" class="btn" @click.prevent="deleteboard(item.id)">
               View Details
             </button>
           </td>
@@ -69,7 +71,7 @@ export default {
   // middleware: 'auth',
   //.where('id', '==', 'job1')
   created() {
-    db.collection('jobdetail')
+    db.collection('dynamicformdetails')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -92,11 +94,11 @@ export default {
       localStorage.userid = val
     },
     deleteboard(val) {
-      db.collection('jobdetail').doc(val).delete()
+      db.collection('dynamicformdetails').doc(val).delete()
       window.location.reload()
     },
   },
-  layout: 'hr',
+  layout: 'hm',
   computed: {
     ...mapState('modules/user', ['user']),
     ...mapGetters({

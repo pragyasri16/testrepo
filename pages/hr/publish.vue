@@ -9,44 +9,70 @@
       />
       <i class="fas fa-search icon" aria-hidden="true"></i>
     </form>
-
+    <!-- v-html="item.desc" -->
     <table id="example" class="table border border-dark bg-white responsive">
       <thead>
         <tr>
-          <th>No.</th>
+          <th>Sr. No.</th>
+          <th>Date</th>
           <th>Job Title</th>
           <th>Department</th>
           <th>Experience</th>
-          <th>Actions</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-    <tr v-for="(item, i) in data" :key="i++">
-          <td>{{i}}</td>
-          <td>{{item.jtitle}}</td>
-          <td>{{item.dname}}</td>
-          <td>{{item.experience}}</td>
-          <td>Button</td>
+        <!-- <tr>
+          <td>0</td>
+          <td>Manager</td>
+          <td>Sales</td>
+          <td>2+</td>
+          <td>
+            <button type="button" class="btn" @click.prevent="xyz(item.id)">
+              View Details
+            </button>
+          </td>
+        </tr> -->
 
+        <tr v-for="(item, i) in data" :key="i++">
+          <td>{{ i++ }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.info.jtitle }}</td>
+          <td>{{ item.info.dname }}</td>
+          <td>{{ item.info.experience }}</td>
+          <td>
+            <button type="button" class="btn" @click.prevent="">
+              View Details
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- {{xyz}} -->
+    {{ getId }}
   </div>
+
   <!-- </div> -->
 </template>
 
+
 <script>
+import { mapState, mapGetters } from 'vuex'
 import firebase from 'firebase'
 import { db } from '../../plugins/firebaseConfig'
 export default {
-  data(){
-    return{
-      data:[]
+  data() {
+    return {
+      data: [],
+      count: 0,
     }
   },
-  layout: 'hr',
-  mounted() {
-    db.collection('jobdetail')
+
+  // middleware: 'auth',
+  //.where('id', '==', 'job1')
+  created() {
+    db.collection('postedjobs')
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -54,12 +80,30 @@ export default {
             id: doc.id,
             ...doc.data(),
           })
-         
+          // this.qwer = doc.get('cname')
+          // console.log('name', cName)
         })
       })
   },
+  methods: {
+    // xyz() {
+    //   this.$router.push('/hr/formfill')
+    // },
+    xyz() {
+      // console.log('Value',val);
+      this.$router.push('/hr/hrform')
+    },
+  },
+  layout: 'hr',
+  computed: {
+    ...mapState('modules/user', ['user']),
+    ...mapGetters({
+      getId: 'getId',
+    }),
+  },
 }
 </script>
+
 
 <style scoped>
 table {
@@ -112,3 +156,6 @@ tbody tr:hover {
   }
 }
 </style>
+
+
+

@@ -1,31 +1,29 @@
 <template>
   <div>
+    {{ que }}
     <form>
-      question<input id="que" v-model="question" />{{ question }} option1<input
+      question<input v-model="que.question" /> option1<input
         id="opt1"
-        v-model="option1"
-      />{{ option1 }} option2<input id="opt2" v-model="option2" />{{
-        option2
-      }}
-      option3<input id="opt3" v-model="option3" />{{ option3 }} option4<input
-        id="opt4"
-        v-model="option4"
-      />{{ option4 }}
+        v-model="que.option1"
+      />
+      option2<input v-model="que.option2" /> option3<input
+        id="opt3"
+        v-model="que.option3"
+      />
+      option4<input id="opt4" v-model="que.option4" />
       <br />
-      <button class="btn btn-primary" @click.prevent="writeToFirestore">Submit</button>
     </form>
 
     <div class="card">
       <form>
         <label for="department">Choose a Department:</label>
-        <select id="dept" name="department">
-          <option value="it">It</option>
+        <select v-model="dname">
+          <option value="it">IT</option>
           <option value="marketing">Marketing</option>
           <option value="sales">Sales</option></select
         ><br />
-
         <label for="list">Choose Language:</label>
-        <select id="lst" name="list">
+        <select>
           <option value=".NET">.NET</option>
           <option value="ANDROID">ANDROID</option>
           <option value="C">C</option>
@@ -53,11 +51,11 @@
           <option value="UNIX">UNIX</option>
           <option value="WEBDRIVER">WEBDRIVER</option>
         </select>
-        <input type="submit" />
+        <button class="btn btn-primary" @click.prevent="writeToFirestore">
+          Submit
+        </button>
       </form>
 
-      {{ this.id }}
-[{que:'asdfg',option1:'fdh'},{que:'hgfds'}]
       <div
         class="card"
         style="width: 18rem"
@@ -95,12 +93,16 @@ export default {
       option4: null,
       data: [],
       qid: uuidv4(),
-     
+      dname: null,
+      que: {},
     }
   },
   methods: {
     async writeToFirestore() {
-      const ref = db.collection('question-set').doc(this.qid)
+      const ref = db
+        .collection('question-set')
+        .doc('test')
+        .collection('this.dname')
       const document = {
         question: this.question,
         option1: this.option1,
@@ -120,8 +122,6 @@ export default {
     deleteque(val) {
       db.collection('question-set').doc(val).delete()
     },
-
-    
   },
 
   mounted() {
@@ -139,5 +139,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 </style>
