@@ -36,9 +36,7 @@
 
       <!-- Work form here  -->
       <select v-model="lname" v-for="item in data" :key="item">
-        <div v-for="xyz in item" :key="xyz">
-          <option value="xyz">{{ xyz }}</option>
-        </div>
+        <option v-for="xyz in item" :key="xyz" :value="xyz">{{ xyz }}</option>
       </select>
       <!-- To here -->
 
@@ -75,6 +73,7 @@
       </button>
     </div>
     <hr />
+    {{ lname }}
   </div>
 </template>
 
@@ -145,3 +144,5 @@ export default {
   margin: auto;
 }
 </style>
+
+
