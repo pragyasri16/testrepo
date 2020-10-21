@@ -13,15 +13,16 @@
           <span v-else>Successful!</span>
         </button>
       </template>
+      
     </MyForm>
-
+       <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success ">
     {{ info }}
   </div>
 </template>
 <!-- Change before adding firestore. -->
 <script>
 import firebase from 'firebase'
-import { db } from '../../plugins/firebaseConfig'
+import { db, auth } from '../../plugins/firebaseConfig'
 import moment from 'moment'
 import { v4 as uuidv4 } from 'uuid'
 import { hrform } from '../../helper/form'
@@ -68,8 +69,16 @@ export default {
       }
       this.writeSuccessful = true
     },
+    
+ resetPassword(){
+          auth.sendPasswordResetEmail(auth.currentUser.email).then(function() {
+  // Email sent.
+  alert('Check Mail')
+}).catch(function(error) {
+  // An error happened.
+});
   },
-}
+}}
 </script>
 
 <style scoped>
@@ -79,4 +88,6 @@ export default {
 /* button {
   color: black;
 } */
+
+
 </style>

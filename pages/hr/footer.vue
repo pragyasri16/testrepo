@@ -6,10 +6,6 @@
         <input type="text" v-model="xyz.question" />
       </div>
       <ul class="list-group list-group-flush">
-        <!-- <li class="list-group-item" v-for="i in 4" :key="i">
-          <label> Option {{ i }}:</label>
-          <input type="text" v-model="option[i]" />
-        </li> -->
         <li class="list-group-item">
           <label> Option 1:</label> <input type="text" v-model="xyz.option1" />
         </li>
@@ -23,57 +19,34 @@
           <label> Option 4:</label> <input type="text" v-model="xyz.option4" />
         </li>
       </ul>
-      <!-- Uncomment
-      <select id="dept" name="department" v-model="dname">
-        <option value="Select Language" selected disabled>
-          Select Language
-        </option>
-
-        <option value="I.T.">I.T.</option>
-        <option value="Marketing">Marketing</option>
-        <option value="Sales">Sales</option>
-      </select> -->
-
-      <!-- Work form here  -->
-      <select v-model="lname" v-for="item in data" :key="item">
+      <!-- Department -->
+      <select v-model="dname" v-for="(item, i) in dept" :key="i">
         <option v-for="xyz in item" :key="xyz" :value="xyz">{{ xyz }}</option>
+        <option value="Other">Other</option>
       </select>
-      <!-- To here -->
-
-      <!-- Example of for loop accessing the data form firestore from collection
-      (questionset) and document (language-options) -->
-      <div v-for="item in data" :key="item">
-        <div v-for="xyz in item" :key="xyz">
-          {{ xyz }}
-        </div>
-      </div>
-
-      <!-- <select v-model="lname">
-        <option value="other">Other</option>
-        <option value="ANDROID">ANDROID</option>
-        <option value=".NET">.NET</option>
-        <option value="C">C</option>
-        <option value="C++">C++</option>        
-        <option value="WEBDRIVER">WEBDRIVER</option>
-      </select> -->
       <input
-        v-show="lname == 'other'"
+        v-show="dname == 'Other'"
+        type="text"
+        placeholder="Enter department here."
+        v-model="deptname"
+      />
+      <!-- Language Options -->
+      <select v-model="lname" v-for="(item, i) in language" :key="i">
+        <option v-for="xyz in item" :key="xyz" :value="xyz">{{ xyz }}</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input
+        v-show="lname == 'Other'"
         type="text"
         placeholder="Enter language here."
         v-model="lagname"
       />
-      <button
-        @click.prevent="
-          writeToFirestore()
-          languages()
-        "
-        class="btn btn-info"
-      >
+      <button @click.prevent="writeToFirestore()" class="btn btn-info">
         Submit
       </button>
     </div>
     <hr />
-    {{ lname }}
   </div>
 </template>
 
@@ -88,7 +61,9 @@ export default {
       dname: null,
       lname: null,
       lagname: null,
-      data: null,
+      language: null,
+      dept: null,
+      deptname:null,
       qid: uuidv4(),
       xyz: {
         question: null,
@@ -104,12 +79,20 @@ export default {
       .doc('language-options')
       .get()
       .then((doc) => {
-        this.data = doc.data()
+        this.language = doc.data()
+      })
+
+    db.collection('questionset')
+      .doc('department')
+      .get()
+      .then((doc) => {
+        this.dept = doc.data()
       })
   },
   methods: {
     async writeToFirestore() {
-      if (this.lname == 'other') {
+      //Question Section
+      if (this.lname == 'Other') {
         this.lname = this.lagname
       }
       const ref = db.collection('question-set').doc('test')
@@ -122,10 +105,12 @@ export default {
         // TODO: error handling
         console.error(e)
       }
-      this.writeSuccessful = true
-    },
 
-    async languages() {
+      //Language Option Section
+      if (this.lname != 'Other') {
+        this.lagname = this.lname
+      }
+
       const data = {
         language: firebase.firestore.FieldValue.arrayUnion(this.lagname),
       }
@@ -133,7 +118,18 @@ export default {
         .collection('questionset')
         .doc('language-options')
         .set(data, { merge: true })
-      console.log('Set: ', res)
+      //Department Section
+      if (this.dname == 'Other') {
+        this.dname = this.deptname
+      }
+      const dept = {
+        dept: firebase.firestore.FieldValue.arrayUnion(this.dname),
+      }
+
+      const rez = await db
+        .collection('questionset')
+        .doc('department')
+        .set(dept, { merge: true })
     },
   },
 }
