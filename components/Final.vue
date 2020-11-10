@@ -2,9 +2,9 @@
   <div>
     <nav class="navbar navbar-expand-md navbar-light">
       <!-- Brand -->
-
-      <h2>LOGO</h2>
-      <!-- <h2>{{xyz}}</h2> -->
+      <h2 class="title is-3">LOGO</h2>
+      <!-- <input type="checkbox" id="check" />
+      <i class="fa fa-bars" id="btn"></i> -->
 
       <!-- Toggler/collapsibe Button -->
       <button
@@ -229,7 +229,6 @@ export default {
       })
     },
   },
-  
 }
 </script>
 
@@ -291,6 +290,7 @@ li:hover {
   transition: all 0.5s ease;
   margin-top: -25px;
   border-right: 5px solid #f1f3f5;
+  z-index: 999;
 }
 
 .sidebar a {
@@ -336,13 +336,13 @@ label #cancel {
   border: 0.75px solid rgba(0, 23, 55, 0.5);
   margin: 5px;
   font-size: 29px;
-  /* background: #262626; */
   height: 40px;
   width: 40px;
   text-align: center;
   line-height: 40px;
   margin-top: -80px;
-  margin-left: 200px;
+  margin-left: 150px;
+  z-index: 99;
   transition: all 0.5s ease;
 }
 label #cancel {
@@ -353,12 +353,12 @@ label #cancel {
   left: 0;
 }
 #check:checked ~ label #btn {
-  /* margin-left: 245px; */
+  /* margin-left: 450px; */
   opacity: 0;
   visibility: hidden;
 }
 #check:checked ~ label #cancel {
-  /* margin-left: 245px; */
+  /* margin-left: 450px; */
   opacity: 1;
   visibility: visible;
 }

@@ -43,6 +43,7 @@
 
       <!-- Sign up button -->
       <button class="btn btn-info my-4 btn-block">SUBMIT</button>
+    
       <!-- <button
         class="btn btn-primary my-4 btn-block"
         type="button"
@@ -68,7 +69,7 @@
 
     <!-- Modal -->
     <div
-      class="modal fade"
+      class="modal"
       id="forgetPass"
       tabindex="-1"
       role="dialog"
@@ -111,12 +112,10 @@ export default {
       email: '',
       pass: '',
       name: '',
-      load: false,
     }
   },
   methods: {
     async signup() {
-      this.load = true
 
       const { user } = await auth.createUserWithEmailAndPassword(
         this.email,
@@ -138,7 +137,6 @@ export default {
         })
         .then(function () {
           // Update successful.
-          // alert('Name assigned')
         })
         .catch(function (error) {
           // An error happened.

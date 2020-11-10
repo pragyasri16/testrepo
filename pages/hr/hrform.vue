@@ -1,6 +1,11 @@
 <template>
   <div>
-    <MyForm :form="abc" v-on:getFormData="info = { ...$event }">
+    {{ udetail }}
+    <MyForm
+      :form="abc"
+      v-on:getFormData="info = { ...$event }"
+      :formPreviewData="udetail"
+    >
       <template v-slot:allbutton>
         <button class="btn btn-primary">Add Test</button>
 
@@ -13,9 +18,7 @@
           <span v-else>Successful!</span>
         </button>
       </template>
-      
     </MyForm>
-       <input type="button" @click="resetPassword" value="Reset password email" class="btn btn-success ">
     {{ info }}
   </div>
 </template>
@@ -35,6 +38,8 @@ export default {
       info: [],
       date: moment().format('DD/MM/YYYY'),
       writeSuccessful: false,
+      id: null,
+      udetail: null,
     }
   },
   //Change uuidv4()
@@ -54,6 +59,15 @@ export default {
   //     })
   // },
   layout: 'hr',
+  created() {
+    this.id = localStorage.Userid
+    db.collection('dynamicformdetails')
+      .doc(this.id)
+      .get()
+      .then((doc) => {
+        this.udetail = doc.data()
+      })
+  },
   methods: {
     async writeToFirestore() {
       const ref = db.collection('postedjobs').doc(uuidv4())
@@ -63,31 +77,33 @@ export default {
       }
       try {
         await ref.set(document)
-      } catch (e) { 
+      } catch (e) {
         // TODO: error handling
         console.error(e)
       }
       this.writeSuccessful = true
     },
-    
- resetPassword(){
-          auth.sendPasswordResetEmail(auth.currentUser.email).then(function() {
-  // Email sent.
-  alert('Check Mail')
-}).catch(function(error) {
-  // An error happened.
-});
+
+    resetPassword() {
+      auth
+        .sendPasswordResetEmail(auth.currentUser.email)
+        .then(function () {
+          // Email sent.
+          alert('Check Mail')
+        })
+        .catch(function (error) {
+          // An error happened.
+        })
+    },
   },
-}}
+}
 </script>
 
 <style scoped>
-* {
+/* * {
   background-color: white;
-}
+} */
 /* button {
   color: black;
 } */
-
-
 </style>

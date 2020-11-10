@@ -1,6 +1,7 @@
 <template>
   <div class="text back">
-    <!-- <h2>{{ user }}</h2> -->
+    <h2>{{ user }}</h2>
+
     <form class="main-form">
       <div class="row">
         <div class="col-md-4 col-sm-12 col-xs-12 form-group">
@@ -91,12 +92,6 @@
         </button>
       </div>
     </form>
-    <!-- {{ entry[1] }}
-    <h2 class="abc">Accessing data in Firestore</h2>
-    <div v-for="item in entry" :key="item" class="col">
-      <div v-for="ele in item" :key="ele">{{ ele }}</div>
-      <br />
-    </div> -->
   </div>
 </template>
 

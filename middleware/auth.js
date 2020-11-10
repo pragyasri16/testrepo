@@ -1,6 +1,6 @@
 export default function ({ store, redirect, route }) {
   const user = store.getters["modules/user/user"];
-  const path = ["/", "/loginform", "/signup"];
+  const path = ["/", "/loginform", "/signup", "/demo1"];
   let value = path.includes(route.path);
   if (!user) {
     if (value) {

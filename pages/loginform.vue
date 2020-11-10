@@ -5,21 +5,18 @@
     {{ name }}
     <form autocomplete="on">
       <div class="field">
-        <input type="email" v-model="email" required />
+        <input type="email" v-model="email" />
         <label>Email Address</label>
       </div>
       <div class="field">
-        <input type="password" v-model="pass" required />
+        <input type="password" v-model="pass" />
         <label>Password</label>
       </div>
       <div class="text-center pt-1">
-        <nuxt-link
-          to
-          class="lcolor"
-          data-toggle="modal"
-          data-target="#forgetPass"
-          >Forget password ?</nuxt-link
-        >
+        <nuxt-link to class="lcolor" @click.native="isModalActive = true"
+          >Forget password ?
+        </nuxt-link>
+        
       </div>
       <div class="field">
         <input type="submit" @click.prevent="login" value="Login" />
@@ -31,51 +28,16 @@
       </div>
     </form>
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="forgetPass"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
-        <div class="modal-content text-center">
-          <!-- <div class="modal-header"> -->
-          <button
-            type="button"
-            class="close ml-auto"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="mt-1">Enter Valid Email</h4>
-          <!-- </div> -->
-          <div class="modal-body">
-            <input
-              type="email"
-              class="mt-2 p-1"
-              v-model="forgetpass"
-            /><br /><br />
-            <button
-              type="button"
-              class="btn btn-primary p-2"
-              @click.prevent="forget"
-            >
-              Submit
-            </button>
-          </div>
-          <!-- <div class="modal-footer mt-3">
-            
-            <button type="button" class="btn btn-primary p-2 mr-3">
-              Save changes
-            </button>
-          </div> -->
-        </div>
-      </div>
-    </div>
+    <!-- Buefy Modal -->
+
+    <b-modal v-model="isModalActive" custom-class="bmodal">
+      <div class="mx-auto title is-2">Enter Valid Email</div>
+
+      <input type="email" class="mt-2 p-1" v-model="forgetpass" /><br />
+      <button type="button" class="btn btn-primary p-2" @click.prevent="forget">
+        Submit
+      </button>
+    </b-modal>
   </div>
 </template>
 
@@ -90,6 +52,7 @@ export default {
       pass: '',
       forgetpass: null,
       name: null,
+      isModalActive: false,
     }
   },
   computed: {
@@ -97,9 +60,9 @@ export default {
   },
 
   methods: {
-    ...mapMutations({
-      addUser: 'addUser',
-    }),
+    // ...mapMutations({
+    //   addUser: 'addUser',
+    // }),
     ...mapActions('modules/user', ['userlogin']),
     forget() {
       auth
@@ -128,9 +91,7 @@ export default {
           setTimeout(() => {
             window.location.reload()
           }, 1000)
-
           // alert('Admin login')
-
           // this.$router.go('/admin')
           // this.$router.push('/admin')
         }
@@ -169,6 +130,13 @@ export default {
 .modal-content {
   margin: auto;
 }
+.bmodal {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 0 27%;
+}
+
 * {
   margin: 0;
   padding: 0;

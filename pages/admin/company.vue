@@ -1,5 +1,7 @@
 <template>
   <div>
+    {{ adminid }}
+    {{ user }}
     <div class="container login-container">
       <div class="col-md-5 login-form-2">
         <h3>Select Role</h3>
@@ -62,7 +64,6 @@
               SUBMIT
             </button>
           </div>
-          <!-- {{ roles }} -->
         </form>
       </div>
     </div>
@@ -72,6 +73,7 @@
 <script>
 import firebase from 'firebase'
 import { auth } from '../../plugins/firebaseConfig'
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -79,9 +81,13 @@ export default {
       pass: null,
       roles: null,
       name: '',
+      adminid: null,
     }
   },
   layout: 'admin',
+  computed: {
+    ...mapState('modules/user', ['user']),
+  },
 
   methods: {
     async signup() {
@@ -93,6 +99,7 @@ export default {
       ) {
         alert('Please fill all details.')
       } else {
+        this.adminid = auth.currentUser.uid
         const { user } = await auth.createUserWithEmailAndPassword(
           this.email,
           this.pass
@@ -103,18 +110,18 @@ export default {
         if (this.roles == 'hr') {
           let data = {
             uid: user.uid,
-            role: { hr: true },
+            info: { hr: true, adminUid: this.adminid },
           }
-          let callable = firebase.functions().httpsCallable('customeClaims')
+          let callable = firebase.functions().httpsCallable('customAdminClaims')
           const res = await callable(data)
           const { claims } = await user.getIdTokenResult()
         }
         if (this.roles == 'hm') {
           let data = {
             uid: user.uid,
-            role: { hm: true },
+            info: { hm: true, admin: user.uid },
           }
-          let callable = firebase.functions().httpsCallable('customeClaims')
+          let callable = firebase.functions().httpsCallable('customAdminClaims')
           const res = await callable(data)
           const { claims } = await user.getIdTokenResult()
         }

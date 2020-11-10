@@ -1,5 +1,6 @@
 <template>
   <div class="ab">
+    
     <form class="form-inline space">
       <input
         class="search form-control form-control-sm"
@@ -33,14 +34,14 @@
             </button>
           </td>
         </tr> -->
-        <tr v-for="(item, i) in data" :key="i++">
-          <td>{{ i++ }}</td>
+        <tr v-for="(item, i) in data" :key="i">
+          <td>{{ i+1 }}</td>
           <td>{{ item.date }}</td>
           <td>{{ item.info.jtitle }}</td>
           <td>{{ item.info.dname }}</td>
           <td>{{ item.info.experience }}</td>
           <td>
-            <button type="button" class="btn" @click.prevent="deleteboard(item.id)">
+            <button type="button" class="btn" @click.prevent="">
               View Details
             </button>
           </td>
@@ -65,6 +66,7 @@ export default {
     return {
       data: [],
       count: 0,
+     
     }
   },
 
@@ -79,17 +81,14 @@ export default {
             id: doc.id,
             ...doc.data(),
           })
-          // this.qwer = doc.get('cname')
-          // console.log('name', cName)
+          
         })
       })
   },
   methods: {
-    // xyz() {
-    //   this.$router.push('/hr/formfill')
-    // },
+    
     xyz(val) {
-      // console.log('Value',val);
+
       this.$store.commit('getValue', val)
       localStorage.userid = val
     },

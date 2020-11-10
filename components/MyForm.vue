@@ -9,6 +9,15 @@
       >
         <label>{{ item.label }}</label>
         <input
+          v-if="formPreviewData != null"
+          :type="item.type"
+          class="form-control"
+          :id="item.id"
+          @input="onInput"
+          v-model="formPreviewData[item.id]"
+        />
+        <input
+          v-else
           :type="item.type"
           class="form-control"
           :id="item.id"
@@ -19,9 +28,8 @@
     </div>
     <br />
 
-    <vue-editor class="editor col-5" @input="onSend" v-model="desc" />
+    <vue-editor class="editor col-5" @input="onInput" v-model="arr['desc']" />
     <div class="col-5 text-right pt-3"><slot name="allbutton"></slot></div>
-    {{ desc }}
   </div>
 </template>
 
@@ -35,31 +43,27 @@ export default {
   data() {
     return {
       arr: [],
-      desc: null,
+      // desc: [],
     }
   },
   props: {
     form: {
       type: Array,
-      // default: null,
     },
+    formPreviewData: Object | Array,
   },
 
   methods: {
     onInput() {
       this.$emit('getFormData', Object.assign({}, this.arr))
     },
-    onSend() {
-      this.$emit('getDescData', Object.assign({}, this.desc))
-    },
+   
   },
 }
 </script>
 <style  scoped>
 * {
   margin: auto;
-
-  /* background-color: white; */
 }
 
 /* .form-group {

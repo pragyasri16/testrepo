@@ -13,6 +13,7 @@ export const getters = {
 
 export const actions = {
   async userlogin({ dispatch }, user) {
+    console.log('user.js',user)
     try {
       const token = await auth.currentUser.getIdToken(true)
       const userInfo = {
@@ -22,7 +23,8 @@ export const actions = {
         isAdmin: user.admin,
         isSadmin: user.sa,
         uid: user.uid,
-        name: user.displayName
+        name: user.displayName,
+        adminUid: user.adminUid
       }
       Cookies.set('access_token', token)
 

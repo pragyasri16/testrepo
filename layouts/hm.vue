@@ -16,4 +16,5 @@ export default {}
   margin-left: 220px;
   padding-bottom: 20px;
 } */
+
 </style>

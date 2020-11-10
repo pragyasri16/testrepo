@@ -1,16 +1,21 @@
 <template>
   <div class="ab">
     <form class="form-inline space">
+      {{id}}
+      {{user}}
       <input
         class="search form-control form-control-sm"
         type="text"
         placeholder="Search"
-        aria-label="Search"
+        v-model="filter"
       />
       <i class="fas fa-search icon" aria-hidden="true"></i>
     </form>
     <!-- v-html="item.desc" -->
-    <table id="example" class="table border border-dark bg-white responsive">
+    <table
+      id="example"
+      class="table border border-dark bg-white responsive sortable"
+    >
       <thead>
         <tr>
           <th>Sr. No.</th>
@@ -33,15 +38,16 @@
             </button>
           </td>
         </tr> -->
+        <!-- Change -->
 
-        <tr v-for="(item, i) in data" :key="i++">
+        <tr v-for="(item, i) in filteredRows" :key="i++">
           <td>{{ i++ }}</td>
           <td>{{ item.date }}</td>
           <td>{{ item.info.jtitle }}</td>
           <td>{{ item.info.dname }}</td>
           <td>{{ item.info.experience }}</td>
           <td>
-            <button type="button" class="btn" @click.prevent="xyz">
+            <button type="button" class="btn" @click.prevent="xyz(item.id)">
               View Details
             </button>
           </td>
@@ -62,16 +68,22 @@ import { mapState, mapGetters } from 'vuex'
 import firebase from 'firebase'
 import { db } from '../../plugins/firebaseConfig'
 export default {
+  head: {
+    script: [
+      {
+        src: 'https://www.kryogenix.org/code/browser/sorttable/sorttable.js',
+      },
+    ],
+  },
   data() {
     return {
       data: [],
-      count: 0,
+      filter: '',
+      id:null
     }
   },
 
-  // middleware: 'auth',
-  //.where('id', '==', 'job1')
-  created() {
+  beforeCreate() {
     db.collection('dynamicformdetails')
       .get()
       .then((querySnapshot) => {
@@ -80,18 +92,14 @@ export default {
             id: doc.id,
             ...doc.data(),
           })
-          // this.qwer = doc.get('cname')
-          // console.log('name', cName)
         })
       })
   },
   methods: {
-    // xyz() {
-    //   this.$router.push('/hr/formfill')
-    // },
-    xyz() {
-      // console.log('Value',val);
+    xyz(val) {
       this.$router.push('/hr/hrform')
+      localStorage.setItem('Userid',val)
+      this.id=localStorage.Userid
     },
   },
   layout: 'hr',
@@ -100,6 +108,24 @@ export default {
     ...mapGetters({
       getId: 'getId',
     }),
+
+    filteredRows() {
+      return this.data.filter((item) => {
+        const date = item.date.toString().toLowerCase()
+        const jobtitle = item.info.jtitle.toLowerCase()
+        const deptname = item.info.dname.toLowerCase()
+        const exp = item.info.experience.toString().toLowerCase()
+
+        const searchTerm = this.filter.toLowerCase()
+
+        return (
+          date.includes(searchTerm) ||
+          jobtitle.includes(searchTerm) ||
+          deptname.includes(searchTerm) ||
+          exp.includes(searchTerm)
+        )
+      })
+    },
   },
 }
 </script>
@@ -113,11 +139,6 @@ table {
 tbody tr:hover {
   background-color: #f1f3f5;
 }
-/* .btn {
-  background-color: white;
-  color: #39d5d5;
-  border: 2px solid  #39d5d5;
-} */
 
 .btn {
   border: 2px solid #39d5d5;
@@ -143,18 +164,18 @@ tbody tr:hover {
 }
 
 .search {
-  width: 200px;
+  width: 250px;
 }
 
 .fas {
   color: #0880ae;
 }
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .ab {
-    /* width: 50%; */
+    width: 50%;
     margin-left: 90px;
   }
-}
+} */
 </style>
 
 

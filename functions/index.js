@@ -10,3 +10,11 @@ exports.customeClaims = functions.https.onCall(async (data, ctx) => {
     console.log(error)
   }
 })
+
+exports.customAdminClaims = functions.https.onCall(async (data, ctx) => {
+  try {
+    let sett = await admin.auth().setCustomUserClaims(data.uid, data.info)
+  } catch (error) {
+    console.log(error)
+  }
+})
