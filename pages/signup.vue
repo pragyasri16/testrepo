@@ -1,127 +1,59 @@
 <template>
-  <div class="main">
-    <!-- Default form register -->
-    <form class="text-center border border-light p-5" @submit.prevent="signup">
-      <p align="left" class="h4 mb-4">Sign up</p>
+    <div>
+      <div class="wrapper column is-one-third">
+        <h2 class="title is-2 has-text-centered m-auto">Sign Up</h2>
+        <p class="content is-medium has-text-centered">Create an account</p>
+        <b-field label="Name">
+            <b-input v-model="name"></b-input>
+        </b-field>
 
-      <div class="form-row mb-4">
-        <div class="col">
-          <!-- contact person name -->
-          <input
-            type="text"
-            id="Name"
-            class="form-control"
-            placeholder="Contact person name"
-            v-model="name"
-          />
-        </div>
-      </div>
+        <b-field label="Email"
+            type=""
+            message="">
+            <b-input type="email"
+                value=""
+                placeholder="Enter valid e-mail address"
+                v-model="email">
+            </b-input>
+        </b-field>
 
-      <!-- E-mail -->
-      <input
-        v-model="email"
-        type="email"
-        id="Email"
-        class="form-control mb-4"
-        placeholder="E-mail"
-      />
+        <b-field label="Password">
+            <b-input type="password"
+                value=""
+                v-model="pass"
+                password-reveal>
+            </b-input>
+        </b-field>
 
-      <!-- Password -->
-      <input
-        v-model="pass"
-        type="password"
-        id="Password"
-        class="form-control"
-        placeholder="Password"
-        aria-describedby="defaultRegisterFormPasswordHelpBlock"
-      />
-      <!-- <small
-        id="defaultRegisterFormPasswordHelpBlock"
-        class="form-text text-muted mb-4"
-        >At least 8 characters and 1 digit</small
-      > -->
-
-      <!-- Sign up button -->
-      <button class="btn btn-info my-4 btn-block">SUBMIT</button>
-    
-      <!-- <button
-        class="btn btn-primary my-4 btn-block"
-        type="button"
-        @click.prevent=""
-        :disabled="load"
-        data-toggle="modal"
-        data-target="#forgetPass"
-      >
-        <span
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-          v-if="load"
-        ></span>
-        Submit
-      </button> -->
-      <!-- <button class="btn btn-info my-4 btn-block" @click.prevent="signin">signin</button> -->
-    </form>
-    <!-- Default form register -->
-    <!-- <pre>
-      {{ email }}-{{ pass }}-{{ name }}
-    </pre> -->
-
-    <!-- Modal -->
-    <div
-      class="modal"
-      id="forgetPass"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
-        <div class="modal-content text-center">
-          <!-- <div class="modal-header"> -->
-          <button
-            type="button"
-            class="close ml-auto"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-
-          <!-- </div> -->
-          <div class="modal-body">
-            <h3>Check Your Mail</h3>
-          </div>
-          <!-- <div class="modal-footer mt-3">
-            
-            <button type="button" class="btn btn-primary p-2 mr-3">
-              Save changes
-            </button>
-          </div> -->
+        <div class="has-text-centered">
+        <b-button type="is-success" size="is-medium" @click.prevent="signup">Sign Up</b-button>
         </div>
       </div>
     </div>
-  </div>
 </template>
+
 <script>
 import firebase from 'firebase'
 import { auth } from '../plugins/firebaseConfig'
-export default {
-  data() {
-    return {
-      email: '',
-      pass: '',
-      name: '',
-    }
-  },
-  methods: {
-    async signup() {
 
-      const { user } = await auth.createUserWithEmailAndPassword(
-        this.email,
-        this.pass
-      )
-      // console.log('user =>', user)
+    export default {
+        layout: 'access',
+        data(){
+          return{
+                 email: '',
+                 pass: '',
+                 name: '',
+          }
+        },
+
+        methods:{
+          async signup() {
+            const { user } = await auth.createUserWithEmailAndPassword(
+                this.email,
+                this.pass
+            )
+
+            // console.log('user =>', user)
       let data = {
         uid: user.uid,
         role: { admin: true },
@@ -153,13 +85,20 @@ export default {
           // An error happened.
           alert('Error creating account.')
         })
-    },
-  },
-}
+          }
+      }
+    }
 </script>
+
 <style scoped>
-.main {
-  width: 400px;
+
+.wrapper {
+  /* width: 450px;
+  height: 400px; */
+  background: #fff;
+  border-radius: 15px;
   margin: auto;
+  box-shadow: 5px 10px 10px 5px rgba(0.19, 0.19, 0.19, 0.19);
+  margin-top: 100px;
 }
 </style>

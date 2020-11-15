@@ -217,7 +217,7 @@ export default {
     ...mapActions('modules/user', ['userlogin']),
 
     login() {
-      this.$router.push('/loginform')
+      this.$router.push('/login')
     },
     signup() {
       this.$router.push('/signup')
